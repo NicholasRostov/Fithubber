@@ -1,0 +1,34 @@
+<h1>Sign Up!</h1>
+<%= form_tag "/users", method: :post do %>
+  <div>
+    <%= label_tag :first_name %>
+    <%= text_field_tag :first_name %>
+  </div>
+
+  <div>
+    <%= label_tag :last_name %>
+    <%= text_field_tag :last_name %>
+  </div>
+
+  <div>
+    <%= label_tag :email %>
+    <%= text_field_tag :email %>
+  </div>
+
+
+  <div>
+    <%= label_tag :username %>
+    <%= text_field_tag :username %>
+  </div>
+
+  <div>
+    <%= label_tag :password_digest %>
+    <%= text_field_tag :password_digest %>
+  </div>
+
+  <div>
+    <%= label_tag :password_confirmation %>
+    <%= text_field_tag :password_confirmation %>
+  </div>
+  <%= submit_tag "Create Account" %>
+  <% end %>
