@@ -1,0 +1,91 @@
+<%= form_tag "/users/#{@user.id}", method: :patch do %>
+<div>
+<%= label_tag :name %>
+<input type="text" name="name" value="<%= "#{first_name} #{last_name}" %>">
+  
+</div>
+
+<div>
+User Name:
+  <input type="text" name="username" value="<%= @user.username %>">
+</div>
+
+<div>
+  First name:
+  <input type="text" name="first_name" value="<%= @user.first_name %>">
+</div>
+
+<div>
+Last name:
+  <input type="text" name="last_name" value="<%= @user.last_name %>">
+</div>
+
+<div>
+Email:
+  <input type="text" name="email" value="<%= @user.email %>">
+</div>
+
+<div>
+  Date of Birth:
+  <input type="text" name="dob" value="<%= @user.dob %>">
+</div>
+
+<div>
+Gender:
+  <input type="text" name="gender" value="<%= @user.gender %>">
+</div>
+
+<div>
+Address 1:
+  <input type="text" name="address_1" value="<%= @user.address_1 %>">
+</div>
+
+<div>
+Address 2:
+  <input type="text" name="address_2" value="<%= @user.address_2 %>">
+</div>
+
+<div>
+
+City:
+  <input type="text" name="city" value="<%= @user.city %>">
+</div>
+
+<div>
+State:
+  <input type="text" name="state" value="<%= @user.state %>">
+</div>
+
+<div>
+Zipcode:
+  <input type="text" name="zipcode" value="<%= @user.zipcode %>">
+</div>
+
+<div>
+Phone Number:
+  <input type="text" name="phone_number" value="<%= @user.phone_number %>">
+</div>
+
+<div>
+Education:
+  <input type="text" name="education" value="<%= @user.education %>">
+</div>
+
+<div>
+Profession:
+  <input type="text" name="profession" value="<%= @user.profession %>">
+</div>
+
+<div>
+Organization:
+  <input type="text" name="organization" value="<%= @user.organization %>">
+</div>
+
+<div>
+Email:
+  <input type="text" name="email" value="<%= @user.email %>">
+</div>
+
+
+<input type="submit" name="Update">
+<% end %>

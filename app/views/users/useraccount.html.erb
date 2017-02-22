@@ -1,0 +1,9 @@
+<p> Name: <%= @user.first_name %></p>
+<p> Last name: <%= @user.last_name %></p>
+<p> Email: <%= @user.email %></p>
+<p> Username: <%= @user.username %></p>
+<p> Date of Birth: <%= @user.dob %></p>
+<p> Profession: <%= @user.profession %></p>
+<p> Organization: <%= @user.organization %></p>
+
+<%= link_to "Edit Profile", "/users/#{current_user.id}/edit", method: :patch %>
