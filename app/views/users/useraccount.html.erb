@@ -6,4 +6,18 @@
 <p> Profession: <%= @user.profession %></p>
 <p> Organization: <%= @user.organization %></p>
 
-<%= link_to "Edit Profile", "/users/#{current_user.id}/edit", method: :patch %>
+<%= link_to "Edit Profile", "/users/#{current_user.id}/edit", method: :get %>
+
+<%= link_to "Log in your data", "/data/new", method: :get %>
+
+<%= link_to "Edit your data", "/data/:id/edit", method: :get %>
+
+<% @today_datas.each do |data| %>
+<p>Date: <%= data.date %></p>
+<p>Steps: <%= data.steps %></p>
+<p>Heart Rate: <%= data.heart_rate %></p>
+<p>Miles: <%= data.miles %></p>
+<p>Calories: <%= data.calories %></p>
+<p>Sleep: <%= data.sleep %></p>
+<p>Special: <%= data.special %></p>
+<% end %>

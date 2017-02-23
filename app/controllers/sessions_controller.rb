@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:success] = "You have succesfully logged into your account!"
-      redirect_to "useraccount.html.erb"
+      redirect_to "/account"
     else
       flash[:warning] = "Wrong log in credentials have been entered..."
       redirect_to "/login"

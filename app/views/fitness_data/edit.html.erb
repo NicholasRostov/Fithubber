@@ -1,0 +1,42 @@
+
+
+<%= form_tag "/data/#{@data.id}", method: :patch do %>
+<div>
+  
+</div>
+
+<div>
+Date
+  <input type="date" name="date" value="<%= @data.date %>">
+</div>
+
+<div>
+  Steps:
+  <input type="text" name="steps" value="<%= @data.steps %>">
+</div>
+<div>
+  Heart Rate:
+  <input type="text" name="heart_rate" value="<%= @data.heart_rate %>">
+</div>
+<div>
+Miles:
+  <input type="text" name="miles" value="<%= @data.miles %>">
+</div>
+
+<div>
+Calories:
+  <input type="text" name="calories" value="<%= @data.calories %>">
+</div>
+
+<div>
+  Sleep:
+  <input type="text" name="sleep" value="<%= @data.sleep %>">
+</div>
+
+<div>
+Special:
+  <input type="text" name="special" value="<%= @data.special %>">
+</div>
+
+<input type="submit" name="Log">
+<% end %>

@@ -1,7 +1,5 @@
 <%= form_tag "/users/#{@user.id}", method: :patch do %>
 <div>
-<%= label_tag :name %>
-<input type="text" name="name" value="<%= "#{first_name} #{last_name}" %>">
   
 </div>
 
@@ -27,7 +25,7 @@ Email:
 
 <div>
   Date of Birth:
-  <input type="text" name="dob" value="<%= @user.dob %>">
+  <input type="date" name="dob" value="<%= @user.dob %>">
 </div>
 
 <div>
@@ -81,10 +79,6 @@ Organization:
   <input type="text" name="organization" value="<%= @user.organization %>">
 </div>
 
-<div>
-Email:
-  <input type="text" name="email" value="<%= @user.email %>">
-</div>
 
 
 <input type="submit" name="Update">

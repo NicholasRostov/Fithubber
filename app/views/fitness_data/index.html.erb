@@ -1,0 +1,11 @@
+<% current_user.fitness_datas.order("date").each do |data| %>
+<p>Date: <%= data.date %></p>
+<p>Steps: <%= data.steps %></p>
+<p>Heart Rate: <%= data.heart_rate %></p>
+<p>Miles: <%= data.miles %></p>
+<p>Calories: <%= data.calories %></p>
+<p>Sleep: <%= data.sleep %></p>
+<p>Special: <%= data.special %></p>
+
+<hr>
+<% end %>

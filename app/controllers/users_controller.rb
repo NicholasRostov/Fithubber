@@ -16,12 +16,12 @@ class UsersController < ApplicationController
   end
   
   def edit
-     @user = User.find_by(current_user.id)
+     @user = User.find_by(id: current_user.id)
   end
 
   def update
     @user = User.find_by(id: params[:id])
-    @user.assign_attributes(first_name: params[:first_name], last_name: params[:last_name], username: params[:username], email: params[:email], dob: params[:dob], gender: params[:gender], address_1: params[:address_1], address_2: params[:address_2], state: [:state], city: [:city], zipcode: params[:zipcode], phone_number: params[:phone_number], education: [:education], profession: params[:profession], organization: [:organization], email: params[:email])
+    @user.assign_attributes(first_name: params[:first_name], last_name: params[:last_name], username: params[:username], email: params[:email], dob: params[:dob], gender: params[:gender], address_1: params[:address_1], address_2: params[:address_2], state: params[:state], city: params[:city], zipcode: params[:zipcode], phone_number: params[:phone_number], education: params[:education], profession: params[:profession], organization: params[:organization])
     if @user.save
       flash[:succes] = "Your account information has been updated."
       redirect_to "useraccount.html.erb"
@@ -30,5 +30,16 @@ class UsersController < ApplicationController
     render "/#{@user.id}"
     end
   end
+
+  def show
+   if current_user
+  @user = current_user
+  @today_datas = @user.fitness_datas.where(date: Date.today)
+  render "useraccount.html.erb"
+else
+  redirect_to "/login"
+  end
+  end
+
 end
 
