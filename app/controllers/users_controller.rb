@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
- def new
+  def new
     render "new.html.erb"
   end
 
@@ -14,9 +14,9 @@ class UsersController < ApplicationController
       redirect_to "/signup"
     end
   end
-  
+
   def edit
-     @user = User.find_by(id: current_user.id)
+    @user = User.find_by(id: current_user.id)
   end
 
   def update
@@ -32,14 +32,12 @@ class UsersController < ApplicationController
   end
 
   def show
-   if current_user
+    if current_user
   @user = current_user
   @today_datas = @user.fitness_datas.where(date: Date.today)
   render "useraccount.html.erb"
-else
-  redirect_to "/login"
+    else
+      redirect_to "/login"
+    end
   end
-  end
-
 end
-

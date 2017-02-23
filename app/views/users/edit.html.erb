@@ -79,7 +79,19 @@ Organization:
   <input type="text" name="organization" value="<%= @user.organization %>">
 </div>
 
+<div>
+<input type="submit" name="Update">
 
+<% end %>
+
+<%= form_tag "/membership", method: :post do %>
+
+Club/Health Club:
+  <input type="text" name="name">
+</div>
 
 <input type="submit" name="Update">
 <% end %>
+
+
+

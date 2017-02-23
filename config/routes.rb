@@ -23,4 +23,7 @@ Rails.application.routes.draw do
   post "/data", to: "fitness_data#create"
   get "/data/:id/edit", to: "fitness_data#edit"
   patch "/data/:id", to: "fitness_data#update"
+
+  #membership route
+  post "/membership", to: "memberships#create"
 end
