@@ -24,6 +24,14 @@ Rails.application.routes.draw do
   get "/data/:id/edit", to: "fitness_data#edit"
   patch "/data/:id", to: "fitness_data#update"
 
-  #membership route
+  # membership route
   post "/membership", to: "memberships#create"
+
+ # activity route
+  post "/activity", to: "activities#create"
+
+  # fitbit
+  get "/fitbit_auth", to: "fitbit_auth#index"
+  post "/auth/fitbit" => "fitbit_auth#make_request"
+  get "/auth/fitbit/callback" => "fitbit_auth#get_response"
 end

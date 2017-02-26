@@ -11,7 +11,7 @@
 <%= link_to "Log in your data", "/data/new", method: :get %>
 
 <%= link_to "Edit your data", "/data/:id/edit", method: :get %>
-
+<% if @today_datas %>
 # <% @today_datas.each do |data| %>
 # <p>Date: <%= data.date %></p>
 # <p>Steps: <%= data.steps %></p>
@@ -20,4 +20,5 @@
 # <p>Calories: <%= data.calories %></p>
 # <p>Sleep: <%= data.sleep %></p>
 # <p>Special: <%= data.special %></p>
+# <% end %>
 # <% end %>
