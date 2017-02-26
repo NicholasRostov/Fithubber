@@ -31,7 +31,8 @@ Rails.application.routes.draw do
   post "/activity", to: "activities#create"
 
   # fitbit
-  get "/fitbit_auth", to: "fitbit_auth#index"
-  post "/auth/fitbit" => "fitbit_auth#make_request"
-  get "/auth/fitbit/callback" => "fitbit_auth#get_response"
+  get 'fitbit/:resource/:date.json' => 'fitbit_auth#data_request'
+  get '/users/auth/:provider', to: 'omniauthcallbacks#passthru'
+  post '/users/auth/:provider', to: 'omniauthcallbacks#passthru'
+  get '/users/auth/fitbit/callback', to: 'omniauthcallbacks#fitbit'
 end
