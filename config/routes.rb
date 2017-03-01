@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
  
-  devise_for :fit_users
+ devise_for :fit_users, :controllers => { :omniauth_callbacks => "fit_users/omniauth_callbacks" }
  # account route
  get "/account", to:"users#show"
 
