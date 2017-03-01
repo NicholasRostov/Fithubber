@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
  
+  devise_for :fit_users
  # account route
  get "/account", to:"users#show"
 
