@@ -20,9 +20,11 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-gem 'fitgem'
+# gem 'fitgem'
 # gem 'omniauth-fitbit'
+gem 'fitgem_oauth2'
 gem 'omniauth-fitbit-oauth2'
+gem 'devise'
 gem 'dotenv-rails'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
