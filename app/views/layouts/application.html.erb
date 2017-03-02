@@ -23,13 +23,9 @@
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     </head>
 
-    <body data-ma-header="teal">
-        <% flash.each do |name, message| %>
-        <div class="alert alert-<%= name %> alert-dismissible" role="alert">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><p><%= message %></p>
-        </div>
-        <% end %>
-        <header id="header" class="media">
+    <body>
+    
+    <!-- <header id="header" class="media">
             <div class="pull-left h-logo">
                 <a href="index.html" class="hidden-xs">
                     Material
@@ -145,19 +141,26 @@
                 </form>
             </div>
 
-        </header>
+    </header> -->
+
+        <% flash.each do |name, message| %>
+        <div class="alert alert-<%= name %> alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><p><%= message %></p>
+        </div>
+        <% end %>
+        
 
         <!-- Page Loader -->
-        <div class="page-loader palette-Teal bg">
+<!--         <div class="page-loader palette-Teal bg">
             <div class="preloader pl-xl pls-white">
                 <svg class="pl-circular" viewBox="25 25 50 50">
                     <circle class="plc-path" cx="50" cy="50" r="20"/>
                 </svg>
             </div>
-        </div>
-        <div class="container">
+        </div> -->
+        <!-- <div class="container"> -->
         <%= yield %>
-        </div>
+        <!-- </div> -->
         <!-- Older IE warning message -->
         <!--[if lt IE 9]>
             <div class="ie-warning">
