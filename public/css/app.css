@@ -11442,7 +11442,7 @@ html:not(.ie9) .select.fg-line:before {
   background-color: #42a5f5;
 }
 [data-lbg="purple"] {
-  background-color: #ab47bc;
+  background-color: #ede7f6;
 }
 .l-block {
   background: #fff;
@@ -13037,11 +13037,11 @@ body.o-hidden {
 }
 [data-ma-header="purple-400"]:before,
 [data-ma-header="purple-400"] #header {
-  background-color: #ab47bc;
+  background-color: #ede7f6;
 }
 [data-ma-header="purple-400"] .smm-alerts > li.active,
 [data-ma-header="purple-400"] .main-menu li.active > a {
-  color: #ab47bc;
+  color: #ede7f6;
 }
 [data-ma-header="red-400"]:before,
 [data-ma-header="red-400"] #header {

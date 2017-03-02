@@ -143,12 +143,12 @@
 
 [data-ma-header="purple-400"]:before,
 [data-ma-header="purple-400"] #header {
-  background-color: #d1c4e9;
+  background-color: #ede7f6;
 }
 
 [data-ma-header="purple-400"] .smm-alerts > li.active,
 [data-ma-header="purple-400"] .main-menu li.active > a {
-  color: #d1c4e9;
+  color: #ede7f6;
 }
 
 [data-ma-header="red-400"]:before,
