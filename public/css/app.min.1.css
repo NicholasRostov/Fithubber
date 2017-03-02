@@ -12756,7 +12756,7 @@ input:focus {
 
 .checkbox input:checked + .input-helper:before,
 .radio input:checked + .input-helper:before {
-  border-color: #26a69a;
+  border-color: #673ab7;
 }
 
 .checkbox .input-helper:before,
@@ -12785,7 +12785,7 @@ input:focus {
 }
 
 .checkbox input:checked + .input-helper:before {
-  background-color: #26a69a;
+  background-color: #673ab7;
 }
 
 .checkbox input:checked + .input-helper:after {
@@ -13986,7 +13986,7 @@ html:not(.ie9) .select.fg-line:before {
 }
 
 [data-lbg="teal"] {
-  background-color: #26a69a;
+  background-color: #673ab7;
 }
 
 [data-lbg="blue"] {
@@ -13994,7 +13994,7 @@ html:not(.ie9) .select.fg-line:before {
 }
 
 [data-lbg="purple"] {
-  background-color: #ab47bc;
+  background-color: #d1c4e9;
 }
 
 .l-block {

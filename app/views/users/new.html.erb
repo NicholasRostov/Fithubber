@@ -1,37 +1,41 @@
 
-
-        <h1>Sign Up!</h1>
 <%= form_tag "/users", method: :post do %>
   <div>
-    <%= label_tag :first_name %>
-    <%= text_field_tag :first_name %>
-  </div>
+        <div class="lb-header palette-Teal bg">
+            <i class="zmdi zmdi-account-circle"></i>
+            Create an account
+        </div>
 
-  <div>
-    <%= label_tag :last_name %>
-    <%= text_field_tag :last_name %>
-  </div>
+        <div class="lb-body">
+            <div class="form-group fg-float">
+                <div class="fg-line">
+                    <input type="text" class="input-sm form-control fg-input" name="full_name">
+                    <label class="fg-label">Full Name</label>
+                </div>           
+            
+            </div>
 
-  <div>
-    <%= label_tag :email %>
-    <%= text_field_tag :email %>
-  </div>
 
+            <div class="form-group fg-float">
+                <div class="fg-line">
+                    <input type="text" class="input-sm form-control fg-input">
+                    <label class="fg-label" name="email">Email Address</label>
+                </div>
+            </div>
 
-  <div>
-    <%= label_tag :username %>
-    <%= text_field_tag :username %>
-  </div>
+            <div class="form-group fg-float">
+                <div class="fg-line">
+                    <input type="password" class="input-sm form-control fg-input">
+                    <label class="fg-label" name="password">Password</label>
+                </div>
+            </div>
+          
+            <button class="btn palette-Teal bg">Create Account</button>
 
-  <div>
-    <%= label_tag :password %>
-    <%= text_field_tag :password %>
-  </div>
-
-  <div>
-    <%= label_tag :password_confirmation %>
-    <%= text_field_tag :password_confirmation %>
-  </div>
-  <%= submit_tag "Create Account" %>
-  <% end %>
-  
+            <div class="m-t-30">
+                <a data-block="#l-login" data-bg="teal" class="palette-Blue text d-block m-b-5" href="login">Already have an account?</a>
+            
+            </div>
+        </div>
+    </div>
+ <% end %>

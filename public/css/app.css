@@ -2697,6 +2697,7 @@ fieldset[disabled] .checkbox label {
 .form-control-static.input-sm {
   padding-left: 0;
   padding-right: 0;
+  padding-top: 5;
 }
 .input-sm {
   height: 30px;
@@ -10415,7 +10416,7 @@ input:focus {
 }
 .checkbox input:checked + .input-helper:before,
 .radio input:checked + .input-helper:before {
-  border-color: #26a69a;
+  border-color: #673ab7;
 }
 .checkbox .input-helper:before,
 .radio .input-helper:before,
@@ -10439,7 +10440,7 @@ input:focus {
   height: 17px;
 }
 .checkbox input:checked + .input-helper:before {
-  background-color: #26a69a;
+  background-color: #673ab7;
 }
 .checkbox input:checked + .input-helper:after {
   opacity: 1;
@@ -11435,7 +11436,7 @@ html:not(.ie9) .select.fg-line:before {
   width: 1px;
 }
 [data-lbg="teal"] {
-  background-color: #26a69a;
+  background-color: #673ab7;
 }
 [data-lbg="blue"] {
   background-color: #42a5f5;

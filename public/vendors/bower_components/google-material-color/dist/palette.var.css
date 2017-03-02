@@ -37,7 +37,7 @@
   --palette-Purple-100: #E1BEE7;
   --palette-Purple-200: #CE93D8;
   --palette-Purple-300: #BA68C8;
-  --palette-Purple-400: #AB47BC;
+  --palette-Purple-400: #ede7f6;
   --palette-Purple-500: #9C27B0;
   --palette-Purple-600: #8E24AA;
   --palette-Purple-700: #7B1FA2;
@@ -49,10 +49,10 @@
   --palette-Purple-A700: #AA00FF;
 
   --palette-Deep-Purple-50: #EDE7F6;
-  --palette-Deep-Purple-100: #D1C4E9;
+  --palette-Deep-Purple-100: #ede7f6;
   --palette-Deep-Purple-200: #B39DDB;
   --palette-Deep-Purple-300: #9575CD;
-  --palette-Deep-Purple-400: #7E57C2;
+  --palette-Deep-Purple-400: #ede7f6;
   --palette-Deep-Purple-500: #673AB7;
   --palette-Deep-Purple-600: #5E35B1;
   --palette-Deep-Purple-700: #512DA8;
@@ -127,7 +127,7 @@
   --palette-Teal-100: #B2DFDB;
   --palette-Teal-200: #80CBC4;
   --palette-Teal-300: #4DB6AC;
-  --palette-Teal-400: #26A69A;
+  --palette-Teal-400: #673ab7;
   --palette-Teal-500: #009688;
   --palette-Teal-600: #00897B;
   --palette-Teal-700: #00796B;

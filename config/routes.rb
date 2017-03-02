@@ -34,6 +34,6 @@ Rails.application.routes.draw do
 
   # fitbit
   get "/fitbit_auth", to: "fitbit_auth#index"
-  post "/auth/fitbit" => "fitbit_auth#make_request"
-  get "/auth/fitbit/callback" => "fitbit_auth#get_response"
+  post "/auth/fitbit", to: "fitbit_auth#make_request"
+  get "/auth/fitbit/callback", to: "fitbit_auth#get_response"
 end
