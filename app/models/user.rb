@@ -7,5 +7,6 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :fitness_datas
   has_many :friends, through: :friendships
+  has_one :fit_user
   
 end

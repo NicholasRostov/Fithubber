@@ -1,7 +1,7 @@
 
 <%= form_tag "/users", method: :post do %>
   <div>
-        <div class="lb-header palette-Teal bg">
+        <div class="lb`-header palette-Teal bg">
             <i class="zmdi zmdi-account-circle"></i>
             Create an account
         </div>
@@ -9,8 +9,15 @@
         <div class="lb-body">
             <div class="form-group fg-float">
                 <div class="fg-line">
-                    <input type="text" class="input-sm form-control fg-input" name="full_name">
-                    <label class="fg-label">Full Name</label>
+                    <input type="text" class="input-sm form-control fg-input" name="first_name">
+                    <label class="fg-label">First Name</label>
+                </div>           
+            </div>
+
+            <div class="form-group fg-float">
+                <div class="fg-line">
+                    <input type="text" class="input-sm form-control fg-input" name="last_name">
+                    <label class="fg-label">Last Name</label>
                 </div>           
             
             </div>
@@ -18,22 +25,38 @@
 
             <div class="form-group fg-float">
                 <div class="fg-line">
-                    <input type="text" class="input-sm form-control fg-input">
-                    <label class="fg-label" name="email">Email Address</label>
+                    <input type="text" class="input-sm form-control fg-input" name="email">
+                    <label class="fg-label">Email Address</label>
                 </div>
             </div>
 
             <div class="form-group fg-float">
                 <div class="fg-line">
-                    <input type="password" class="input-sm form-control fg-input">
-                    <label class="fg-label" name="password">Password</label>
+                    <input type="password" class="input-sm form-control fg-input" name="password">
+                    <label class="fg-label" >Password</label>
                 </div>
             </div>
-          
-            <button class="btn palette-Teal bg">Create Account</button>
+
+            <div class="form-group fg-float">
+                <div class="fg-line">
+                    <input type="password" class="input-sm form-control fg-input" name="password_confirmation">
+                    <label class="fg-label">Confirm Password</label>
+                </div> 
+
+                 <div class="form-group fg-float">
+                <div class="fg-line">
+                    <input type="text" class="input-sm form-control fg-input" name="username">
+                    <label class="fg-label">Create User Name</label>
+                </div> 
+
+
+            <button class="btn palette-Teal bg button-margin">Create Account</button>
 
             <div class="m-t-30">
                 <a data-block="#l-login" data-bg="teal" class="palette-Blue text d-block m-b-5" href="login">Already have an account?</a>
+                <a><%= link_to "Sign in with Fitbit", fit_user_fitbit_oauth2_omniauth_authorize_path %></a>
+
+            </div>
             
             </div>
         </div>
