@@ -6,24 +6,26 @@
 <p> Profession: <%= @user.profession %></p>
 <p> Organization: <%= @user.organization %></p>
 
-<%= link_to "Edit Profile", "/users/#{current_user.id}/edit", method: :get %>
+<div><%= link_to "Edit Profile", "/users/#{current_user.id}/edit", method: :get %></div>
 
-<%= link_to "Log in your data", "/data/new", method: :get %>
+<div><%= link_to "Log in your data", "/data/new", method: :get %></div>
 
-<%= link_to "Edit your data", "/data/:id/edit", method: :get %>
+<div><% link_to "Edit your data", "/data/1/edit", method: :get %></div>
+
+<a><div><%= link_to "Link Fitbit Account", fit_user_fitbit_oauth2_omniauth_authorize_path %></a></div>
 
 
 <% if @today_datas %>
-# <% @today_datas.each do |data| %>
-# <p>Date: <%= data.date %></p>
-# <p>Steps: <%= data.steps %></p>
-# <p>Heart Rate: <%= data.heart_rate %></p>
-# <p>Miles: <%= data.miles %></p>
-# <p>Calories: <%= data.calories %></p>
-# <p>Sleep: <%= data.sleep %></p>
-# <p>Special: <%= data.special %></p>
-# <% end %>
-# <% end %>
+<% @today_datas.each do |data| %>
+<p>Date: <%= data.date %></p>
+<p>Steps: <%= data.steps %></p>
+<p>Heart Rate: <%= data.heart_rate %></p>
+<p>Miles: <%= data.miles %></p>
+<p>Calories: <%= data.calories %></p>
+<p>Sleep: <%= data.sleep %></p>
+<p>Special: <%= data.special %></p>
+ <% end %>
+ <% end %>
 
-<%= session[:fitbit_token] %>
-<%= @user_profile %>
+<%= @user_activity %>
+<div><%= @goals %></div>

@@ -22,9 +22,6 @@ class UsersController < ApplicationController
   def update
     @user = User.find_by(id: params[:id])
     @user.assign_attributes(first_name: params[:first_name], last_name: params[:last_name], username: params[:username], email: params[:email], dob: params[:dob], gender: params[:gender], address_1: params[:address_1], address_2: params[:address_2], state: params[:state], city: params[:city], zipcode: params[:zipcode], phone_number: params[:phone_number], education: params[:education], profession: params[:profession], organization: params[:organization])
-    @user_profile = Unirest.get("https://api.fitbit.com/1/user/#{current_user.fit_user.uid}/profile.json", headers: {"Authorization" => headers}).body
-      height = @user_profile["user"]["height"]
-      current_user.update(height: height)
     if @user.save
       flash[:succes] = "Your account information has been updated."
       redirect_to "useraccount.html.erb"
@@ -39,6 +36,15 @@ class UsersController < ApplicationController
       @user = current_user
       @today_datas = @user.fitness_datas.where(date: Date.today)
       headers = "Bearer #{session[:fitbit_token]}"
+      if current_user.fit_user
+        @user_activity = Unirest.get("https://api.fitbit.com/1/user/#{current_user.fit_user.uid}/activities/date/2017-03-02.json", headers: {"Authorization" => headers}).body
+        # height = @user_profile["user"]["height"]
+        # current_user.update(height: height)
+        @goals = @user_activity["goals"]["activeMinutes"]
+        
+      end
+      # height = @user_profile["user"]["height"]
+      # current_user.update(height: height)
       render "useraccount.html.erb"
     else
       redirect_to "/login"

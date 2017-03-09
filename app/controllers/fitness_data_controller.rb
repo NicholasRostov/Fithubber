@@ -16,7 +16,12 @@ class FitnessDataController < ApplicationController
   end
 
   def edit
-     @data = FitnessData.find_by(id: current_user.id)
+     @data = FitnessData.find_by(user_id: current_user.id)
+    if @data.nil?
+      redirect_to "/data/new"
+    else
+      render "edit.html.erb"
+    end
   end
 
   def update
