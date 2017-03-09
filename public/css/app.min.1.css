@@ -10040,15 +10040,6 @@ html {
   overflow-x: hidden;
 }
 
-body:before {
-  content: '';
-  height: 265px;
-  width: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
 audio,
 video {
   outline: none;
