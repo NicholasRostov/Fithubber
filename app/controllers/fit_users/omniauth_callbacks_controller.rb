@@ -8,6 +8,7 @@ class FitUsers::OmniauthCallbacksController < Devise::OmniauthCallbacksControlle
     if @user.persisted?
       # sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
       # set_flash_message(:notice, :success, :kind => "Fitbit Oauth2") if is_navigational_format?
+      redirect_to "/account"
     else
       data = request.env["omniauth.auth"]
       if current_user

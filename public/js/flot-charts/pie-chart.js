@@ -4,7 +4,7 @@ $(document).ready(function(){
         {data: 2, color: '#03A9F4', label: 'Nissan'},
         {data: 3, color: '#8BC34A', label: 'Hyundai'},
         {data: 4, color: '#FFEB3B', label: 'Scion'},
-        {data: 4, color: '#009688', label: 'Daihatsu'},
+        {data: 4, color: '#311B92', label: 'Daihatsu'},
     ];
     
     /* Pie Chart */

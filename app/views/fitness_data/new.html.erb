@@ -6,7 +6,7 @@
 <div class="row">
     <div class="col-sm-4">
         <div class="input-group">
-            <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
+            <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i></span>
             <div class="fg-line">
                     <input type="text" name="date" class="form-control" placeholder="Date" value="<%= @data.date %>">
             </div>
@@ -15,7 +15,7 @@
         <br/>
 
         <div class="input-group">
-            <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
+            <span class="input-group-addon"><i class="zmdi zmdi-run"></i></span>
             <div class="fg-line">
                 <input type="text" name="steps" class="form-control" placeholder="Steps" value="<%= @data.steps %>">
             </div>
@@ -27,15 +27,6 @@
             <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
             <div class="fg-line">
                 <input type="text" name="heart_rate" class="form-control" placeholder="Heart Rate" value="<%= @data.heart_rate %>">
-            </div>
-        </div>
-
-        <br/>
-
-        <div class="input-group">
-            <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
-            <div class="fg-line">
-                <input type="text" name="miles" class="form-control" placeholder="Miles" value="<%= @data.miles %>">
             </div>
         </div>
 
@@ -54,7 +45,7 @@
             <div class="fg-line">
                 <input type="text" name="sleep" class="form-control" placeholder="Sleep" value="<%= @data.sleep %>">
             </div>
-            <span class="input-group-addon last"><i class="zmdi zmdi-male-female"></i></span>
+            <span class="input-group-addon last"><i class="zmdi zmdi-alarm-check"></i></span>
         </div>
 
         <br/>
@@ -63,7 +54,16 @@
             <div class="fg-line">
                 <input type="text" name="special" class="form-control" placeholder="Active Minutes" value="<%= @data.special %>">
             </div>
-            <span class="input-group-addon last"><i class="zmdi zmdi-home"></i></span>
+            <span class="input-group-addon last"><i class="zmdi zmdi-run"></i></span>
+        </div>
+
+        <br/>
+
+        <div class="input-group">
+            <div class="fg-line">
+                <input type="text" name="miles" class="form-control" placeholder="Miles" value="<%= @data.miles %>">
+            </div>
+            <span class="input-group-addon"><i class="zmdi zmdi-run"></i></span>
         </div>
 
         <br/>
