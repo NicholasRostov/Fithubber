@@ -1,45 +1,83 @@
-<div class="push-down">
-  
-  <%= form_tag "/data/#{@data.id}", method: :post do %>
-  <div>
-    
-  </div>
 
-  <div>
-  Date
-    <input type="date" name="date" value="<%= @data.date %>">
-  </div>
+<%= form_tag "/data/#{@data.id}", method: :post do %>
 
-  <div>
-    Steps:
-    <input type="text" name="steps" value="<%= @data.steps %>">
-  </div>
-  <div>
-    Heart Rate:
-    <input type="text" name="heart_rate" value="<%= @data.heart_rate %>">
-  </div>
-  <div>
-  Miles:
-    <input type="text" name="miles" value="<%= @data.miles %>">
-  </div>
+<br/><br/>
 
-  <div>
-  Calories:
-    <input type="text" name="calories" value="<%= @data.calories %>">
-  </div>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
+            <div class="fg-line">
+                    <input type="text" name="date" class="form-control" placeholder="Date" value="<%= @data.date %>">
+            </div>
+        </div>
 
-  <div>
-    Sleep:
-    <input type="text" name="sleep" value="<%= @data.sleep %>">
-  </div>
+        <br/>
 
-  <div>
-  Special:
-    <input type="text" name="special" value="<%= @data.special %>">
-  </div>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
+            <div class="fg-line">
+                <input type="text" name="steps" class="form-control" placeholder="Steps" value="<%= @data.steps %>">
+            </div>
+        </div>
 
+        <br/>
 
+        <div class="input-group">
+            <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
+            <div class="fg-line">
+                <input type="text" name="heart_rate" class="form-control" placeholder="Heart Rate" value="<%= @data.heart_rate %>">
+            </div>
+        </div>
 
-  <input type="submit" name="Log">
-  <% end %>
+        <br/>
+
+        <div class="input-group">
+            <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
+            <div class="fg-line">
+                <input type="text" name="miles" class="form-control" placeholder="Miles" value="<%= @data.miles %>">
+            </div>
+        </div>
+
+        <br/>
+
+        <div class="input-group">
+            <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
+            <div class="fg-line">
+                <input type="text" name="calories" class="form-control" placeholder="Calories" value="<%= @data.calories %>">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="input-group">
+            <div class="fg-line">
+                <input type="text" name="sleep" class="form-control" placeholder="Sleep" value="<%= @data.sleep %>">
+            </div>
+            <span class="input-group-addon last"><i class="zmdi zmdi-male-female"></i></span>
+        </div>
+
+        <br/>
+
+        <div class="input-group">
+            <div class="fg-line">
+                <input type="text" name="special" class="form-control" placeholder="Active Minutes" value="<%= @data.special %>">
+            </div>
+            <span class="input-group-addon last"><i class="zmdi zmdi-home"></i></span>
+        </div>
+
+        <br/>
+      
+    </div>
 </div>
+
+<br/><br/>
+
+<button class="btn palette-Teal bg button-margin" type="submit" name="Update">Update</button>
+<% end %>
+
+ <br/>
+ <br/>
+ <br/>
+
+

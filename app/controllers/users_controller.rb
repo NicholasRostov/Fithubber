@@ -36,13 +36,13 @@ class UsersController < ApplicationController
       @user = current_user
       @today_datas = @user.fitness_datas.where(date: Date.today)
       headers = "Bearer #{session[:fitbit_token]}"
-      if current_user.fit_user
-        @user_activity = Unirest.get("https://api.fitbit.com/1/user/#{current_user.fit_user.uid}/activities/date/2017-03-02.json", headers: {"Authorization" => headers}).body
-        # height = @user_profile["user"]["height"]
-        # current_user.update(height: height)
-        @goals = @user_activity["goals"]["activeMinutes"]
+      # if current_user.fit_user
+        # @user_activity = Unirest.get("https://api.fitbit.com/1/user/#{current_user.fit_user.uid}/activities/date/2017-03-02.json", headers: {"Authorization" => headers}).body
+        # # height = @user_profile["user"]["height"]
+        # # current_user.update(height: height)
+        # @goals = @user_activity["goals"]["activeMinutes"]
         
-      end
+      # end
       # height = @user_profile["user"]["height"]
       # current_user.update(height: height)
       render "useraccount.html.erb"
