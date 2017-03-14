@@ -9817,11 +9817,11 @@ a.waves-effect .waves-ripple {
 }
 
 .bgm-teal {
-  background-color: #009688 !important;
+  background-color: #311B92 !important;
 }
 
 .c-teal {
-  color: #009688 !important;
+  color: #311B92 !important;
 }
 
 .bgm-green {
@@ -10299,7 +10299,7 @@ pre {
     width: 100%;
     left: 0;
     top: 0;
-    background-color: #009688;
+    background-color: #311B92;
     z-index: 1;
     opacity: 0;
     -webkit-transform: translate3d(0, -65px, 0);
@@ -10585,7 +10585,7 @@ pre {
 
   .smm-header i {
     font-size: 21px;
-    color: #009688;
+    color: #311B92;
     background: #fff;
     width: 40px;
     height: 40px;
@@ -11162,7 +11162,7 @@ pre {
 }
 
 .tab-nav[data-tab-color="teal"] > li > a:after {
-  background: #009688;
+  background: #311B92;
 }
 
 .tab-nav[data-tab-color="amber"] > li > a:after {
@@ -12834,7 +12834,7 @@ input:focus {
 .radio .input-helper:after {
   width: 9px;
   height: 9px;
-  background: #009688;
+  background: #311B92;
   border-radius: 50%;
   top: 4px;
   left: 5px;
@@ -13089,7 +13089,7 @@ html:not(.ie9) .select.fg-line:before {
 }
 
 .toggle-switch:not([data-ts-color]) input:not(:disabled):checked + .ts-helper:before {
-  background: #009688;
+  background: #311B92;
 }
 
 .toggle-switch:not([data-ts-color]) input:not(:disabled):checked + .ts-helper:active:before {
@@ -13574,7 +13574,7 @@ html:not(.ie9) .select.fg-line:before {
 }
 
 .modal[data-modal-color="teal"] .modal-content {
-  background: #009688;
+  background: #311B92;
 }
 
 .modal[data-modal-color="orange"] .modal-content {
@@ -13717,7 +13717,7 @@ html:not(.ie9) .select.fg-line:before {
 }
 
 .panel-group[data-collapse-color="teal"] .panel-collapse .panel-heading.active .panel-title > a:after {
-  background: #009688;
+  background: #311B92;
 }
 
 .panel-group[data-collapse-color="black"] .panel-collapse .panel-heading.active .panel-title > a:after {

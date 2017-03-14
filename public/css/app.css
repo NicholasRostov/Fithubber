@@ -7982,10 +7982,10 @@ a.waves-effect .waves-ripple {
   color: #00bcd4 !important;
 }
 .bgm-teal {
-  background-color: #009688 !important;
+  background-color: #311B92 !important;
 }
 .c-teal {
-  color: #009688 !important;
+  color: #311B92 !important;
 }
 .bgm-green {
   background-color: #4caf50 !important;
@@ -8377,7 +8377,7 @@ pre {
     width: 100%;
     left: 0;
     top: 0;
-    background-color: #009688;
+    background-color: #311B92;
     z-index: 1;
     opacity: 0;
     -webkit-transform: translate3d(0, -65px, 0);
@@ -8616,7 +8616,7 @@ pre {
   }
   .smm-header i {
     font-size: 21px;
-    color: #009688;
+    color: #311B92;
     background: #fff;
     width: 40px;
     height: 40px;
@@ -9104,7 +9104,7 @@ pre {
   background: #f44336;
 }
 .tab-nav[data-tab-color="teal"] > li > a:after {
-  background: #009688;
+  background: #311B92;
 }
 .tab-nav[data-tab-color="amber"] > li > a:after {
   background: #ffc107;
@@ -10491,7 +10491,7 @@ input:focus {
 .radio .input-helper:after {
   width: 9px;
   height: 9px;
-  background: #009688;
+  background: #311B92;
   border-radius: 50%;
   top: 4px;
   left: 5px;
@@ -10708,7 +10708,7 @@ html:not(.ie9) .select.fg-line:before {
   background: rgba(0, 150, 136, 0.5);
 }
 .toggle-switch:not([data-ts-color]) input:not(:disabled):checked + .ts-helper:before {
-  background: #009688;
+  background: #311B92;
 }
 .toggle-switch:not([data-ts-color]) input:not(:disabled):checked + .ts-helper:active:before {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28), 0 0 0 20px rgba(0, 150, 136, 0.2);
@@ -11095,7 +11095,7 @@ html:not(.ie9) .select.fg-line:before {
   background: #ffc107;
 }
 .modal[data-modal-color="teal"] .modal-content {
-  background: #009688;
+  background: #311B92;
 }
 .modal[data-modal-color="orange"] .modal-content {
   background: #ff9800;
@@ -11215,7 +11215,7 @@ html:not(.ie9) .select.fg-line:before {
   background: #ffc107;
 }
 .panel-group[data-collapse-color="teal"] .panel-collapse .panel-heading.active .panel-title > a:after {
-  background: #009688;
+  background: #311B92;
 }
 .panel-group[data-collapse-color="black"] .panel-collapse .panel-heading.active .panel-title > a:after {
   background: #000000;
@@ -12918,7 +12918,7 @@ body.o-hidden {
   stroke: #ffc107;
 }
 .preloader.pls-teal .plc-path {
-  stroke: #009688;
+  stroke: #311B92;
 }
 .preloader.pls-gray .plc-path {
   stroke: #9e9e9e;
@@ -12989,11 +12989,11 @@ body.o-hidden {
 }
 [data-ma-header="teal"]:before,
 [data-ma-header="teal"] #header {
-  background-color: #009688;
+  background-color: #311B92;
 }
 [data-ma-header="teal"] .smm-alerts > li.active,
 [data-ma-header="teal"] .main-menu li.active > a {
-  color: #009688;
+  color: #311B92;
 }
 [data-ma-header="blue"]:before,
 [data-ma-header="blue"] #header {
@@ -13892,17 +13892,17 @@ select.chosen {
 .input-slider:not([data-is-color]) .noUi-connect,
 .input-slider-range:not([data-is-color]) .noUi-connect,
 .input-slider-values:not([data-is-color]) .noUi-connect {
-  background: #009688 !important;
+  background: #311B92 !important;
 }
 .input-slider:not([data-is-color]) .is-tooltip,
 .input-slider-range:not([data-is-color]) .is-tooltip,
 .input-slider-values:not([data-is-color]) .is-tooltip {
-  background: #009688;
+  background: #311B92;
 }
 .input-slider:not([data-is-color]) .is-tooltip:after,
 .input-slider-range:not([data-is-color]) .is-tooltip:after,
 .input-slider-values:not([data-is-color]) .is-tooltip:after {
-  border-color: #009688 transparent transparent transparent;
+  border-color: #311B92 transparent transparent transparent;
 }
 .input-slider[data-is-color=red] .noUi-handle,
 .input-slider-range[data-is-color=red] .noUi-handle,
@@ -13948,7 +13948,7 @@ select.chosen {
   background: #d4d4d4;
 }
 .input-slider:not([data-is-color]) .noUi-base {
-  background: #009688 !important;
+  background: #311B92 !important;
 }
 .input-slider[data-is-color=red] .noUi-base {
   background: #f44336 !important;
@@ -14231,13 +14231,13 @@ select.chosen {
   color: #333;
 }
 .bootstrap-datetimepicker-widget a[data-action] {
-  color: #009688;
+  color: #311B92;
 }
 .timepicker-picker .btn {
   box-shadow: none !important;
 }
 .timepicker-picker table tbody tr + tr:not(:last-child) {
-  background: #009688;
+  background: #311B92;
   color: #fff;
 }
 .timepicker-picker table tbody tr + tr:not(:last-child) td {
@@ -14268,11 +14268,11 @@ select.chosen {
   background: rgba(0, 0, 0, 0.2);
 }
 .datepicker table thead tr:first-child th {
-  background: #009688;
+  background: #311B92;
   padding: 20px 0;
 }
 .datepicker table thead tr:first-child th:hover {
-  background: #009688;
+  background: #311B92;
 }
 .datepicker table thead tr:first-child th.picker-switch {
   font-size: 16px;
@@ -14342,7 +14342,7 @@ select.chosen {
   color: #fff;
 }
 .datepicker table td.active:before {
-  background-color: #009688;
+  background-color: #311B92;
 }
 .datepicker-months .month,
 .datepicker-years .year,
@@ -14360,7 +14360,7 @@ select.chosen {
 .datepicker-years .year.active,
 .timepicker-minutes .minute.active,
 .timepicker-hours .hour.active {
-  background: #009688;
+  background: #311B92;
 }
 .timepicker-minutes .minute,
 .timepicker-hours .hour {
