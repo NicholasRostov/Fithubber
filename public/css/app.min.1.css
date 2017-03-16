@@ -10569,7 +10569,7 @@ pre {
   .smm-header {
     display: block;
     height: 80px;
-    background-image: url('../img/headers/sm/4.png');
+    background-color: #311B92;
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -14128,7 +14128,7 @@ html:not(.ie9) .select.fg-line:before {
 
 @media (min-width: 768px) {
   #profile-main .pmo-pic .pmo-stat {
-    background: #ffc107;
+    background: #311B92;
     padding-bottom: 15px;
   }
 }

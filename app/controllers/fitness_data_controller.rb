@@ -29,13 +29,6 @@ class FitnessDataController < ApplicationController
     @data.assign_attributes(steps: params[:steps], heart_rate: params[:heart_rate], miles: params[:miles], calories: params[:calories], date: params[:date], sleep: params[:sleep], special: params[:special])
      if current_user.fit_user
         @user_activity = Unirest.get("https://api.fitbit.com/1/user/#{current_user.fit_user.uid}/activities/date/2017-03-02.json", headers: {"Authorization" => headers}).body
-        # # height = @user_profile["user"]["height"]
-        # # current_user.update(height: height)
-        # @goals = @user_activity["goals"]["activeMinutes"]
-        
-      # end
-      # height = @user_profile["user"]["height"]
-      # current_user.update(height: height)
     if @data.save
       flash[:success] = "Your data has been updated!"
       redirect_to "index.html.erb"

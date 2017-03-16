@@ -1,6 +1,89 @@
+<div class="card" id="profile-main">
+                        <div class="pm-overview c-overflow">
+                            <div class="pmo-pic">
+                                <div class="p-relative">
+                                    <a href="">
+                                        <img class="img-responsive" src="img/profile-pics/profile-pic-2.jpg" alt="">
+                                    </a>
 
-<p> Name: <%= @user.first_name %></p>
-<p> Last name: <%= @user.last_name %></p>
+
+                                    <a href="" class="pmop-edit">
+                                        <i class="zmdi zmdi-camera"></i> <span class="hidden-xs">Update Profile Picture</span>
+                                    </a>
+                                </div>
+
+
+                                <div class="pmo-stat">
+                                    <h2 class="m-0 c-white"><%= @user.full_name %></h2>
+                                    Total Connections
+                                </div>
+                            </div>
+
+                            <div class="pmo-block pmo-contact hidden-xs">
+                                <h2>Contact</h2>
+
+                                <ul>
+                                    <li><i class="zmdi zmdi-phone"></i> 00971 12345678 9</li>
+                                    <li><i class="zmdi zmdi-email"></i> malinda-h@gmail.com</li>
+                                    <li><i class="zmdi zmdi-facebook-box"></i> malinda.hollaway</li>
+                                    <li><i class="zmdi zmdi-twitter"></i> @malinda (twitter.com/malinda)</li>
+                                    <li>
+                                        <i class="zmdi zmdi-pin"></i>
+                                        <address class="m-b-0 ng-binding">
+                                            44-46 Morningside Road,<br>
+                                            Edinburgh,<br>
+                                            Scotland
+                                        </address>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="pmo-block pmo-items hidden-xs">
+                                <h2>Connections</h2>
+
+                                <div class="pmob-body">
+                                    <div class="row">
+                                        <a href="" class="col-xs-2">
+                                            <img class="img-circle" src="img/profile-pics/1.jpg" alt="">
+                                        </a>
+                                        <a href="" class="col-xs-2">
+                                            <img class="img-circle" src="img/profile-pics/2.jpg" alt="">
+                                        </a>
+                                        <a href="" class="col-xs-2">
+                                            <img class="img-circle" src="img/profile-pics/3.jpg" alt="">
+                                        </a>
+                                        <a href="" class="col-xs-2">
+                                            <img class="img-circle" src="img/profile-pics/4.jpg" alt="">
+                                        </a>
+                                        <a href="" class="col-xs-2">
+                                            <img class="img-circle" src="img/profile-pics/5.jpg" alt="">
+                                        </a>
+                                        <a href="" class="col-xs-2">
+                                            <img class="img-circle" src="img/profile-pics/6.jpg" alt="">
+                                        </a>
+                                        <a href="" class="col-xs-2">
+                                            <img class="img-circle" src="img/profile-pics/7.jpg" alt="">
+                                        </a>
+                                        <a href="" class="col-xs-2">
+                                            <img class="img-circle" src="img/profile-pics/8.jpg" alt="">
+                                        </a>
+                                        <a href="" class="col-xs-2">
+                                            <img class="img-circle" src="img/profile-pics/1.jpg" alt="">
+                                        </a>
+                                        <a href="" class="col-xs-2">
+                                            <img class="img-circle" src="img/profile-pics/2.jpg" alt="">
+                                        </a>
+                                        <a href="" class="col-xs-2">
+                                            <img class="img-circle" src="img/profile-pics/3.jpg" alt="">
+                                        </a>
+                                        <a href="" class="col-xs-2">
+                                            <img class="img-circle" src="img/profile-pics/4.jpg" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+<p> Name: <%= @user.full_name %></p>
 <p> Email: <%= @user.email %></p>
 <p> Username: <%= @user.username %></p>
 <p> Date of Birth: <%= @user.dob %></p>
