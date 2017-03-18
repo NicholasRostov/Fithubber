@@ -10118,8 +10118,8 @@ pre {
   -ms-user-select: none;
   user-select: none;
   position: relative;
-  padding: 40px 45px;
-  margin-bottom: 20px;
+  padding: 30px 30px;
+  margin-bottom: 5px;
   z-index: 10;
 }
 

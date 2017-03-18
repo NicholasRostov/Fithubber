@@ -5,7 +5,7 @@ class FitnessDataController < ApplicationController
   end
 
   def create
-    @data = FitnessData.new(steps: params[:steps], heart_rate: params[:heart_rate], miles: params[:miles], calories: params[:calories], date: params[:date], sleep: params[:sleep], special: params[:special], user_id: current_user.id)
+    @data = FitnessData.new(steps: params[:steps], heart_rate: params[:heart_rate], distance: params[:distance], calories: params[:calories], date: params[:date], sleep: params[:sleep], special: params[:special], user_id: current_user.id)
     if @data.save
       flash[:succes] = "Your data has been logged!"
       redirect_to "/data/index"
@@ -26,7 +26,7 @@ class FitnessDataController < ApplicationController
 
   def update
     @data = FitnessData.find_by(id: params[:id])
-    @data.assign_attributes(steps: params[:steps], heart_rate: params[:heart_rate], miles: params[:miles], calories: params[:calories], date: params[:date], sleep: params[:sleep], special: params[:special])
+    @data.assign_attributes(steps: params[:steps], heart_rate: params[:heart_rate], distance: params[:distance], calories: params[:calories], date: params[:date], sleep: params[:sleep], special: params[:special])
      if current_user.fit_user
         @user_activity = Unirest.get("https://api.fitbit.com/1/user/#{current_user.fit_user.uid}/activities/date/2017-03-02.json", headers: {"Authorization" => headers}).body
     if @data.save

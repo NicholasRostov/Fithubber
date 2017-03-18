@@ -15,7 +15,7 @@
 
                                 <div class="pmo-stat">
                                     <h2 class="m-0 c-white"><%= @user.full_name %></h2>
-                                    Total Connections
+                                    <%= @user.profession %>, <%= @user.organization %>
                                 </div>
                             </div>
 
@@ -23,16 +23,17 @@
                                 <h2>Contact</h2>
 
                                 <ul>
-                                    <li><i class="zmdi zmdi-phone"></i> 00971 12345678 9</li>
-                                    <li><i class="zmdi zmdi-email"></i> malinda-h@gmail.com</li>
-                                    <li><i class="zmdi zmdi-facebook-box"></i> malinda.hollaway</li>
-                                    <li><i class="zmdi zmdi-twitter"></i> @malinda (twitter.com/malinda)</li>
+                                    <li><i class="zmdi zmdi-phone"></i><%= @user.phone_number %></li>
+                                    <li><i class="zmdi zmdi-email"></i> <%= @user.email %></li>
+                                    <li><i class="zmdi zmdi-pin-account"></i> <%= @user.username %></li>
+                                    <li><i class="zmdi zmdi-assignment"></i> <%= @user.dob %></li>
                                     <li>
                                         <i class="zmdi zmdi-pin"></i>
                                         <address class="m-b-0 ng-binding">
-                                            44-46 Morningside Road,<br>
-                                            Edinburgh,<br>
-                                            Scotland
+                                            <%= @user.address_1 %>,
+                                            <%= @user.address_2 %><br>
+                                            <%= @user.city %>,
+                                            <%= @user.state %>
                                         </address>
                                     </li>
                                 </ul>
@@ -104,7 +105,7 @@
 <p>Date: <%= data.date %></p>
 <p>Steps: <%= data.steps %></p>
 <p>Heart Rate: <%= data.heart_rate %></p>
-<p>Miles: <%= data.miles %></p>
+<p>Distance: <%= data.distance %></p>
 <p>Calories: <%= data.calories %></p>
 <p>Sleep: <%= data.sleep %></p>
 <p>Special: <%= data.special %></p>

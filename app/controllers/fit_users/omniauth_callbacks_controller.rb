@@ -9,25 +9,51 @@ class FitUsers::OmniauthCallbacksController < Devise::OmniauthCallbacksControlle
         headers = "Bearer #{session[:fitbit_token]}"
         @fit.save
         @user_profile = Unirest.get("https://api.fitbit.com/1/user/#{current_user.fit_user.uid}/profile.json", headers: { "Authorization" => headers }).body
-        activities = ["steps", 'calories'] 
-        activities.each do |activity|
-          activity_data = Unirest.get("https://api.fitbit.com/1/user/#{current_user.fit_user.uid}/activities/#{activity}/date/today/1m.json", headers: { "Authorization" => headers }).body["activities-#{activity}"]
+
+        heart_api = Unirest.get("https://api.fitbit.com/1/user/#{current_user.fit_user.uid}/activities/heart/date/today/1m.json", headers: { "Authorization" => headers}).body["activities-heart"]
+        heart_data = []
+        heart_api.each do |heart|
+          heart_data << heart["value"]["restingHeartRate"]
+          binding.pry
+          heart_day = current_user.fitness_datas.find_by(date: heart["dateTime"], user_id: current_user.id)
+          if heart_day.nil?
+            FitnessData.create(heart_rate: heart["value"]["restingHeartRate"], date: heart["dateTime"], user_id: current_user.id)
+          elsif heart_day
+            heart_day.update(heart_rate: heart_data[0])
+
+        sleep_data = Unirest.get("https://api.fitbit.com/1/user/#{current_user.fit_user.uid}/sleep/minutesAsleep/date/today/1m.json", headers: { "Authorization" => headers}).body["sleep-minutesAsleep"]
+
+          sleep_data.each do |sleep|
+            sleep_day = current_user.fitness_datas.find_by(date: sleep["dateTime"],
+              user_id: current_user.id)
+            if sleep_day.nil?
+              FitnessData.create(sleep: sleep["value"], date: sleep["dateTime"],
+                user_id: current_user.id)
+            elsif sleep_day
+              sleep_day.update(sleep: sleep["value"])
+              activities = ["steps", 'calories', 'distance'] 
+              activities.each do |activity|
+              activity_data = Unirest.get("https://api.fitbit.com/1/user/#{current_user.fit_user.uid}/activities/#{activity}/date/today/1m.json", headers: { "Authorization" => headers }).body["activities-#{activity}"]
+
           activity_data.each do |entry|
             fitness_day = current_user.fitness_datas.find_by(date: entry["dateTime"], user_id: current_user.id)
             if fitness_day.nil?
               FitnessData.create(activity => entry["value"], date: entry["dateTime"], user_id: current_user.id)
             elsif fitness_day
               fitness_day.update(activity => entry["value"])
+              end
             end
           end
         end
+      end
+    end
+  end
         current_user.update(gender: @user_profile["user"]["gender"], full_name: @user_profile["user"]["fullName"], dob: @user_profile["user"]["dateOfBirth"])
         redirect_to "/account"
       else
         flash[:warning] = "You must create an account first."
         redirect_to "/login"
       end
-    # end
   end
 
   def failure

@@ -22,7 +22,6 @@ class UsersController < ApplicationController
   def update
     @user = User.find_by(id: params[:id])
     @user.assign_attributes(full_name: params[:full_name], username: params[:username], email: params[:email], dob: params[:dob], gender: params[:gender], address_1: params[:address_1], address_2: params[:address_2], state: params[:state], city: params[:city], zipcode: params[:zipcode], phone_number: params[:phone_number], education: params[:education], profession: params[:profession], organization: params[:organization])
-    
     if @user.save
       flash[:succes] = "Your account information has been updated."
       redirect_to "useraccount.html.erb"

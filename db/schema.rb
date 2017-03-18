@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170316143150) do
+ActiveRecord::Schema.define(version: 20170316172703) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20170316143150) do
   create_table "fitness_data", force: :cascade do |t|
     t.integer  "steps"
     t.integer  "heart_rate"
-    t.integer  "miles"
+    t.integer  "distance"
     t.integer  "calories"
     t.integer  "sleep"
     t.integer  "special"
