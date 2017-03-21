@@ -39,4 +39,12 @@ Rails.application.routes.draw do
 
   # photo routes
   post "/photos", to: "photos#create"
+
+  #AngularJS Wall
+  namespace :api do
+    namespace :v1 do
+      resources :posts
+    end
+  end
+
 end

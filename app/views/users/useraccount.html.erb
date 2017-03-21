@@ -6,8 +6,6 @@
                
             </a>
 
-
-
             <a href="" class="pmop-edit">
                 <%= form_tag "/photos", method: :post, multipart: true do %>
 
@@ -107,12 +105,40 @@
     </ul>
       <div class="tab-content">
         <div id="feed" class="tab-pane fade in active">
-          <h3>HOME</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <div>
+
+            <div ng-app="app">
+            <div ng-controller="wallCtrl" ng-init="setup()">
+            <div ng-repeat="post in posts">
+                <div>{{ post.body }}</div>
+                <div>{{ post.photo }}</div>
+                <div>{{ post.url }}</div>
+                
+            <div>
+                <button ng-click="killPost(post)">Kill this Post</button>
+            </div>
+         </div>
+   
+            <ul>
+              <li ng-repeat="error in errors">{{ error }}</li>
+            </ul>
+            <p>Body: <input ng-model="inputBody"></p>
+            <p>Photo: <input ng-model="inputPhoto"></p>
+            <p>URL: <input ng-model="inputUrl"></p>
+            <button ng-click="addPost(inputBody, inputPhoto, inputUrl)">Add Post</button>
+          </div>
+        </div>
+      </div>
+          
         </div>
         <div id="fitnessdata" class="tab-pane fade">
-          <h3>Menu 1</h3>
-          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <h3>Data</h3>
+          <div>
+          The chart is here:
+          <div class="ct-chart ct-perfect-fourth"></div>
+
+
+          </div>
         </div>
         <div id="photos" class="tab-pane fade">
           <h3>Menu 2</h3>
@@ -120,3 +146,4 @@
         </div>
       </div>
     </div>
+
