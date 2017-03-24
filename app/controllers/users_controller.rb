@@ -1,6 +1,18 @@
 class UsersController < ApplicationController
+  
   def new
     render "new.html.erb"
+  end
+
+  def search
+    search_result = params[:search_result]
+    @user = User.find_by("full_name LIKE ?", "%#{search_result}%")
+    if @user
+      render "useraccount.html.erb"
+    else
+      flash[:warning] = "User does not exist"
+      redirect_to "/account/#{current_user.id}"
+    end
   end
 
   def create
@@ -33,12 +45,20 @@ class UsersController < ApplicationController
 
   def show
     if current_user
-      @user = current_user
+      @user = User.find_by(id: params[:id])
       @today_datas = @user.fitness_datas.where(date: Date.today)
       headers = "Bearer #{session[:fitbit_token]}"
+      gon.calories_data = @user.fitness_datas.find_by(date: "2017-03-14").calories
+      gon.steps_data = @user.fitness_datas.find_by(date: "2017-03-14").steps
+      gon.sleep_data = @user.fitness_datas.find_by(date: "2017-03-14").sleep
+      gon.heart_rate_data = @user.fitness_datas.find_by(date: "2017-03-14").heart_rate
+      gon.distance_data = @user.fitness_datas.find_by(date: "2017-03-14").distance
       render "useraccount.html.erb"
     else
       redirect_to "/login"
     end
   end
+
+
+
 end

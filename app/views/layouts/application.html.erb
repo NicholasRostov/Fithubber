@@ -22,6 +22,7 @@
         <link href="/css/app.min.2.css" rel="stylesheet">
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <%= Gon::Base.render_data %>
     </head>
 
     <body data-ma-header="teal">
@@ -48,12 +49,13 @@
             </div>
 
             
-
+            <% if current_user %>
             <div class="media-body h-search">
-                <form class="p-relative">
-                    <input type="text" class="hs-input" placeholder="Search for people, files & reports">
+                <%= form_tag "/search_results", method: :post, class: "p-relative" do %>
+                    <input type="text" name="search_result" class="hs-input" placeholder="Search Friends">
                     <i class="zmdi zmdi-search hs-reset" data-ma-action="search-clear"></i>
-                </form>
+                <% end %>
+                <% end %>
             </div>
 
         </header>
@@ -82,7 +84,11 @@
 
                 <ul class="main-menu">
                     <li>
-                        <a href="/account"><i class="zmdi zmdi-home"></i> Home</a>
+                        <% if current_user %>
+                            <a href="/account/<%= current_user.id %>"><i class="zmdi zmdi-home"></i>Home</a>
+                        <% else %>
+                            <a href="/login"><i class="zmdi zmdi-home"></i>Login</a>
+                        <% end %>
                     </li>
                     <% if current_user %>
                     <li class="sub-menu">
@@ -98,51 +104,7 @@
                         <i class="zmdi zmdi-format-underlined"></i>
                         Refresh Fitbit Data
                         <% end %>
-                    </li>
-                    <li><a href="widgets.html"><i class="zmdi zmdi-widgets"></i> Widgets</a></li>
-                    <li class="sub-menu">
-                        <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-view-list"></i> Tables</a>
-
-                        <ul>
-                            <li><a href="tables.html">Normal Tables</a></li>
-                            <li><a href="data-tables.html">Data Tables</a></li>
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-collection-text"></i> Forms</a>
-
-                        <ul>
-                            <li><a href="form-elements.html">Basic Form Elements</a></li>
-                            <li><a href="form-components.html">Form Components</a></li>
-                            <li><a href="form-examples.html">Form Examples</a></li>
-                            <li><a href="form-validations.html">Form Validation</a></li>
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-swap-alt"></i>User Interface</a>
-                        <ul>
-                            <li><a href="colors.html">Colors</a></li>
-                            <li><a href="animations.html">Animations</a></li>
-                            <li><a href="box-shadow.html">Box Shadow</a></li>
-                            <li><a href="buttons.html">Buttons</a></li>
-                            <li><a href="icons.html">Icons</a></li>
-                            <li><a href="alerts.html">Alerts</a></li>
-                            <li><a href="preloaders.html">Preloaders</a></li>
-                            <li><a href="notification-dialog.html">Notifications & Dialogs</a></li>
-                            <li><a href="media.html">Media</a></li>
-                            <li><a href="components.html">Components</a></li>
-                            <li><a href="other-components.html">Others</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="flot-charts.html"><i class="zmdi zmdi-trending-up"></i> Flot Charts</a></li>
-                    <li class="sub-menu">
-                        <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-image"></i>Photo Gallery</a>
-                        <ul>
-                            <li><a href="photos.html">Default</a></li>
-                            <li><a href="photo-timeline.html">Timeline</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="calendar.html"><i class="zmdi zmdi-calendar"></i> Calendar</a></li>
+                    
                     <li><a href="/logout"><i class="zmdi zmdi-layers"></i> Log Out</a></li>
                     <li><a href="https://www.fitbit.com/logout" target="_blank"><i class="zmdi zmdi-layers"></i> Log Out of Fitbit</a></li>
 
@@ -150,7 +112,7 @@
 
                     
                     <li class="sub-menu">
-                        <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-menu"></i> 3 Level Menu</a>
+                    
 
                         <ul>
                             <li><a href="form-elements.html">Level 2 link</a></li>

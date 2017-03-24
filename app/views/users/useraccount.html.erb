@@ -5,7 +5,7 @@
             <a href="">
                
             </a>
-
+            <% if @user == current_user %>
             <a href="" class="pmop-edit">
                 <%= form_tag "/photos", method: :post, multipart: true do %>
 
@@ -17,9 +17,10 @@
                 <span class="hidden-xs">Update Profile Picture</span>
                   <i class="zmdi zmdi-camera"></i> <%= submit_tag 'Update' %>
                 <% end %>
+                <% end %>
             </a>
-              <% if current_user && !current_user.photos.empty? %>
-                 <%= image_tag(current_user.photos.first.image) %>
+              <% if @user && !@user.photos.empty? %>
+                 <%= image_tag(@user.photos.first.image) %>
                 <% end %>
         </div>
 
@@ -46,6 +47,9 @@
                     <%= @user.address_2 %><br>
                     <%= @user.city %>,
                     <%= @user.state %>
+                   <!--  <%= @user.memberships %>
+                    <%= @user.activities %> -->
+
                 </address>
             </li>
         </ul>
@@ -54,45 +58,27 @@
     <div class="pmo-block pmo-items hidden-xs">
         <h2>Connections</h2>
 
+        <% @user.frienship.each do |friend| %> 
         <div class="pmob-body">
             <div class="row">
                 <a href="" class="col-xs-2">
-                    <img class="img-circle" src="img/profile-pics/1.jpg" alt="">
+                    <img class="img-circle" data-src="<%= friend.photo.first.image.url %>" alt="">
                 </a>
-                <a href="" class="col-xs-2">
-                    <img class="img-circle" src="img/profile-pics/2.jpg" alt="">
-                </a>
-                <a href="" class="col-xs-2">
-                    <img class="img-circle" src="img/profile-pics/3.jpg" alt="">
-                </a>
-                <a href="" class="col-xs-2">
-                    <img class="img-circle" src="img/profile-pics/4.jpg" alt="">
-                </a>
-                <a href="" class="col-xs-2">
-                    <img class="img-circle" src="img/profile-pics/5.jpg" alt="">
-                </a>
-                <a href="" class="col-xs-2">
-                    <img class="img-circle" src="img/profile-pics/6.jpg" alt="">
-                </a>
-                <a href="" class="col-xs-2">
-                    <img class="img-circle" src="img/profile-pics/7.jpg" alt="">
-                </a>
-                <a href="" class="col-xs-2">
-                    <img class="img-circle" src="img/profile-pics/8.jpg" alt="">
-                </a>
-                <a href="" class="col-xs-2">
-                    <img class="img-circle" src="img/profile-pics/1.jpg" alt="">
-                </a>
-                <a href="" class="col-xs-2">
-                    <img class="img-circle" src="img/profile-pics/2.jpg" alt="">
-                </a>
-                <a href="" class="col-xs-2">
-                    <img class="img-circle" src="img/profile-pics/3.jpg" alt="">
-                </a>
-                <a href="" class="col-xs-2">
-                    <img class="img-circle" src="img/profile-pics/4.jpg" alt="">
-                </a>
+               
+                <% end %>
+       
+
+
             </div>
+            <% unless current_user == @user %>
+            <%= link_to "Add Friend", friendships_path(:friend_id => @user), :method => :post %>
+            <% end %>
+
+
+
+
+
+
         </div>
     </div>
 </div>
@@ -113,12 +99,13 @@
                 <div>{{ post.body }}</div>
                 <div>{{ post.photo }}</div>
                 <div>{{ post.url }}</div>
-                
+             <% if @user == current_user %>   
             <div>
                 <button ng-click="killPost(post)">Kill this Post</button>
             </div>
+            <% end %>
          </div>
-   
+            <% if @user == current_user  %>
             <ul>
               <li ng-repeat="error in errors">{{ error }}</li>
             </ul>
@@ -126,23 +113,67 @@
             <p>Photo: <input ng-model="inputPhoto"></p>
             <p>URL: <input ng-model="inputUrl"></p>
             <button ng-click="addPost(inputBody, inputPhoto, inputUrl)">Add Post</button>
+            <% end %>
           </div>
         </div>
       </div>
+
           
         </div>
         <div id="fitnessdata" class="tab-pane fade">
           <h3>Data</h3>
           <div>
           The chart is here:
-          <div class="ct-chart ct-perfect-fourth"></div>
-
-
+          <div class="ct-chart1 ct-perfect-fourth chart-width1" id="chart1"></div>
+          <div class="ct-chart2 ct-perfect-fourth chart-width2" id="chart2"></div>
+        
           </div>
         </div>
         <div id="photos" class="tab-pane fade">
-          <h3>Menu 2</h3>
-          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <h3>Photos</h3>
+          <div>
+            <div class="pmb-block clearfix photos">
+            <div class="p-header">
+            <ul class="p-menu">
+                
+            <% if @user == current_user %>
+
+                <li class="active"><a href=""><i class="zmdi zmdi-image"></i>Add Photos</a></li>
+                
+
+
+                <a href="" class="pmop-edit">
+                <%= form_tag "/photos", method: :post, multipart: true do %>
+
+                  <div>
+                  
+                    <%= file_field_tag :image %>
+                  </div>
+
+                <span class="hidden-xs">Updload</span>
+                  <i class="zmdi zmdi-camera"></i> <%= submit_tag 'Update' %>
+                <% end %>
+                <% end %>
+                </a>
+            
+
+            </ul>
+
+       <div>
+
+        <% @user.photos.each do |photo| %>   
+        <div class="lightbox">
+            <div data-src="<%= photo.image.url %>" class="col-md-3 col-sm-4 col-xs-6 photo-height">
+                <div class="lightbox-item p-item">
+                    <%= image_tag(photo.image.url) %>
+                </div>
+            </div>
+        </div>
+     <% end %>
+        </div>
+        <div class="clearfix"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

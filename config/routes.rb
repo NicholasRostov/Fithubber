@@ -3,7 +3,7 @@ Rails.application.routes.draw do
  devise_for :fit_users, :controllers => { :omniauth_callbacks => "fit_users/omniauth_callbacks" }
  root to: "users#new"
  # account route
- get "/account", to:"users#show"
+ get "/account/:id", to:"users#show"
 
 
   # sign up routes
@@ -26,13 +26,13 @@ Rails.application.routes.draw do
   get "/data/:id/edit", to: "fitness_data#edit"
   patch "/data/:id", to: "fitness_data#update"
 
-  # membership route
+  # Membership route
   post "/membership", to: "memberships#create"
 
- # activity route
+ # Activity route
   post "/activity", to: "activities#create"
 
-  # fitbit
+  # Fitbit
   get "/fitbit_auth", to: "fitbit_auth#index"
   post "/auth/fitbit", to: "fitbit_auth#make_request"
   get "/auth/fitbit/callback", to: "fitbit_auth#get_response"
@@ -40,11 +40,17 @@ Rails.application.routes.draw do
   # photo routes
   post "/photos", to: "photos#create"
 
-  #AngularJS Wall
+  # AngularJS Wall
   namespace :api do
     namespace :v1 do
       resources :posts
+
     end
   end
+  # Friend route
+  resources :friendships
+
+  # Serach route
+  post "/search_results" => "users#search"
 
 end

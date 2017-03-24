@@ -11,7 +11,7 @@ class FitUsers::OmniauthCallbacksController < Devise::OmniauthCallbacksControlle
       end
       @user_profile = Unirest.get("https://api.fitbit.com/1/user/#{current_user.fit_user.uid}/profile.json", headers: { "Authorization" => headers }).body
         if current_user.update(gender: @user_profile["user"]["gender"], full_name: @user_profile["user"]["fullName"], dob: @user_profile["user"]["dateOfBirth"])
-          redirect_to "/account"
+          redirect_to "/account/#{current_user.id}"
         else
           flash[:warning] = "You must create an account first."
           redirect_to "/login"
@@ -24,9 +24,9 @@ class FitUsers::OmniauthCallbacksController < Devise::OmniauthCallbacksControlle
           heart_rate = heart["value"]["restingHeartRate"] || 0
           # binding.pry
           heart_day = current_user.fitness_datas.find_by(date: heart["dateTime"], user_id: current_user.id)
-            if heart_rate == 0
+            if !heart_day && heart_rate == 0
               FitnessData.create(heart_rate: heart_rate, date: heart["dateTime"], user_id: current_user.id)
-            elsif heart_rate
+            elsif heart_day && heart_rate
               heart_day.update(heart_rate: heart_rate)
             end
           end
