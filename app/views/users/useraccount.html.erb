@@ -56,23 +56,19 @@
     </div>
 
     <div class="pmo-block pmo-items hidden-xs">
-        <h2>Connections</h2>
-
-        <% @user.frienship.each do |friend| %> 
         <div class="pmob-body">
+            <h2>Connections</h2>
+            <% @user.friends.each do |friend| %> 
             <div class="row">
                 <a href="" class="col-xs-2">
-                    <img class="img-circle" data-src="<%= friend.photo.first.image.url %>" alt="">
+                    <img class="img-circle" data-src="<%= friend.photos.first.image.url %>" alt="">
                 </a>
                
                 <% end %>
-       
-
-
-            </div>
-            <% unless current_user == @user %>
-            <%= link_to "Add Friend", friendships_path(:friend_id => @user), :method => :post %>
-            <% end %>
+                <% unless current_user == @user %>
+                <%= link_to "Add Friend", friendships_path(:friend_id => @user), :method => :post %>
+                <% end %>
+        </div>
 
 
 
