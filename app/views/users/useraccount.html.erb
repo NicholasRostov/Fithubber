@@ -1,176 +1,266 @@
 <div class="card" id="profile-main">
+
     <div class="pm-overview c-overflow">
-    <div class="pmo-pic">
-        <div class="p-relative">
-            <a href="">
-               
-            </a>
-            <% if @user == current_user %>
-            <a href="" class="pmop-edit">
-                <%= form_tag "/photos", method: :post, multipart: true do %>
+        <div class="pmo-pic">
 
-                  <div>
-                  
-                    <%= file_field_tag :image %>
-                  </div>
+            <div class="p-relative">
 
-                <span class="hidden-xs">Update Profile Picture</span>
-                  <i class="zmdi zmdi-camera"></i> <%= submit_tag 'Update' %>
+                <% if @user == current_user %>
+                <div href="" class="pmop-edit">
+                    <%= form_tag "/photos", method: :post, multipart: true do %>
+
+                    <div>
+
+                        <%= file_field_tag :image, onclick: "console.log('hi')" %>
+                    </div>
+
+                    <span class="hidden-xs">Update Profile Picture</span>
+                    <i class="zmdi zmdi-camera"></i> <%= submit_tag 'Update' %>
+                    <% end %>
+                    <% end %>
+                </div>
+                <% if @user && !@user.photos.empty? %>
+                <%= image_tag(@user.photos.first.image) %>
                 <% end %>
-                <% end %>
-            </a>
-              <% if @user && !@user.photos.empty? %>
-                 <%= image_tag(@user.photos.first.image) %>
-                <% end %>
+            </div>
+
+
+            <div class="pmo-stat">
+                <h2 class="m-0 c-white"><%= @user.full_name %></h2>
+                <%= @user.profession %>, <%= @user.organization %>
+            </div>
         </div>
 
 
-        <div class="pmo-stat">
-            <h2 class="m-0 c-white"><%= @user.full_name %></h2>
-            <%= @user.profession %>, <%= @user.organization %>
+        <div class="pmo-block pmo-contact hidden-xs">
+            <h2>Contact</h2>
+
+            <ul>
+                <li><i class="zmdi zmdi-phone"></i><%= @user.phone_number %></li>
+                <li><i class="zmdi zmdi-email"></i> <%= @user.email %></li>
+                <li><i class="zmdi zmdi-pin-account"></i> <%= @user.username %></li>
+                <li><i class="zmdi zmdi-assignment"></i> <%= @user.dob %></li>
+                <li>
+                    <i class="zmdi zmdi-pin"></i>
+                    <address class="m-b-0 ng-binding">
+                        <%= @user.address_1 %>,
+                        <%= @user.address_2 %><br>
+                        <%= @user.city %>,
+                        <%= @user.state %>
+                    </address>
+                </li>
+            </ul>
+        </div>
+
+        <div class="pmo-block pmo-items hidden-xs">
+            <div class="pmob-body">
+                <h2>Connections</h2>
+                <% @user.friends.each do |friend| %> 
+                <div class="row">
+                    <a href="" class="col-xs-2">
+                        <img class="img-circle" data-src="<%= friend.photos.first.image.url %>" alt="">
+                    </a>
+
+                    <% end %>
+                    <% unless current_user == @user %>
+                    <%= link_to "Add Friend", friendships_path(:friend_id => @user), :method => :post %>
+                    <% end %>
+                </div>
+            </div>
         </div>
     </div>
 
-
-    <div class="pmo-block pmo-contact hidden-xs">
-        <h2>Contact</h2>
-
-        <ul>
-            <li><i class="zmdi zmdi-phone"></i><%= @user.phone_number %></li>
-            <li><i class="zmdi zmdi-email"></i> <%= @user.email %></li>
-            <li><i class="zmdi zmdi-pin-account"></i> <%= @user.username %></li>
-            <li><i class="zmdi zmdi-assignment"></i> <%= @user.dob %></li>
-            <li>
-                <i class="zmdi zmdi-pin"></i>
-                <address class="m-b-0 ng-binding">
-                    <%= @user.address_1 %>,
-                    <%= @user.address_2 %><br>
-                    <%= @user.city %>,
-                    <%= @user.state %>
-                   <!--  <%= @user.memberships %>
-                    <%= @user.activities %> -->
-
-                </address>
-            </li>
+    <div class="pm-body clearfix">
+        <ul class="nav nav-tabs tn-justified">
+            <li class="active waves-effect"><a href="#fitnessdata" data-toggle="tab" >Fitness Data</a></li>
+            <li class="waves-effect"><a href="#feed" data-toggle="tab" >Feed</a></li>
+            <li class="waves-effect"><a href="#photos" data-toggle="tab" >Photos</a></li>
         </ul>
-    </div>
-
-    <div class="pmo-block pmo-items hidden-xs">
-        <div class="pmob-body">
-            <h2>Connections</h2>
-            <% @user.friends.each do |friend| %> 
-            <div class="row">
-                <a href="" class="col-xs-2">
-                    <img class="img-circle" data-src="<%= friend.photos.first.image.url %>" alt="">
-                </a>
-               
-                <% end %>
-                <% unless current_user == @user %>
-                <%= link_to "Add Friend", friendships_path(:friend_id => @user), :method => :post %>
-                <% end %>
+        <div class="tab-content">
+            <div id="fitnessdata" class="tab-pane fade in active">
+              <h3>Data</h3>
+              <div>
+                  The chart is here:
+                  <!-- <div class="ct-chart1 ct-perfect-fourth chart-width1" id="chart1"></div> -->
+                  <!-- <div class="ct-chart2 ct-perfect-fourth chart-width2" id="chart2"></div> -->
+                  <body ng-app="app" ng-controller="MainController as main">
+                    <input type="datetime" ng-model="date"></input>
+                    <button ng-click="changeDate(date, <%= current_user.id %>)">Change date</button>
+                    <div class="row flex-row">
+                        <pie-chart data="main.data1"></pie-chart>
+                        <pie-chart data="main.data2"></pie-chart>
+                        <pie-chart data="main.data3"></pie-chart>
+                    </div>
+                    <div class="row flex-row-2">
+                        <pie-chart data="main.data4"></pie-chart>
+                        <pie-chart data="main.data5"></pie-chart>
+                    </div>
+                </body>
+            </div>
         </div>
-
-
-
-
-
-
-        </div>
-    </div>
-</div>
-
-<div class="pm-body clearfix">
-    <ul class="nav nav-tabs tn-justified">
-        <li class="active waves-effect"><a href="#feed" data-toggle="tab" >Feed</a></li>
-        <li class="waves-effect"><a href="#fitnessdata" data-toggle="tab" >Fitness Data</a></li>
-        <li class="waves-effect"><a href="#photos" data-toggle="tab" >Photos</a></li>
-    </ul>
-      <div class="tab-content">
-        <div id="feed" class="tab-pane fade in active">
+        <div id="feed" class="tab-pane fade">
           <div>
-
             <div ng-app="app">
-            <div ng-controller="wallCtrl" ng-init="setup()">
-            <div ng-repeat="post in posts">
-                <div>{{ post.body }}</div>
-                <div>{{ post.photo }}</div>
-                <div>{{ post.url }}</div>
-             <% if @user == current_user %>   
+                <div ng-controller="wallCtrl" ng-init="setup()">
+                    <% if @user == current_user  %>
+                    <ul>
+                      <li ng-repeat="error in errors">{{ error }}</li>
+                  </ul>
+                  <div class="row">
+                    <div class="col-md-8">
+                        <div class="potato">
+                            <div class="card wall-posting">
+                                <div class="card-body card-padding">
+                                    <textarea ng-model="inputBody" class="wp-text" data-auto-size placeholder="Write Something..."></textarea>
+
+                                    <div class="tab-content p-0">
+                                        <div class="wp-media tab-pane" id="wpm-image">
+                                           <% if @user == current_user %>
+                                           <div href="" class="pmop-edit">
+                                            <%= form_tag "/photos", method: :post, multipart: true do %>
+                                            <div>
+                                                <%= file_field_tag :image, onclick: "console.log('hi2')" %>
+                                            </div>
+                                            <span class="hidden-xs">Upload picture</span>
+                                            <i class="zmdi zmdi-camera"></i> <%= submit_tag 'Upload' %>
+                                            <% end %>
+                                            <% end %>
+                                        </div>
+                                    </div>
+                                </div>
+<!--                                 <div class="wp-media tab-pane" id="wpm-video">
+                        Video Links - Coming soon...
+                    </div>
+
+                    <div class="wp-media tab-pane" id="wpm-link">
+                        Links - Coming soon...
+                    </div> -->
+                </div>
+            </div>
+
+            <ul class="list-unstyled clearfix wpb-actions">
+                <li class="wpba-attrs">
+                    <ul class="list-unstyled list-inline">
+                        <li><a data-wpba="image" data-toggle="tab" href="" data-target="#wpm-image"><i class="zmdi zmdi-image"></i></a></li>
+                        <li><a data-wpba="video" data-toggle="tab" href="" data-target="#wpm-video"><i class="zmdi zmdi-play-circle"></i></a></li>
+                        <li><a data-wpba="link" data-toggle="tab" href="" data-target="#wpm-link"><i class="zmdi zmdi-link"></i></a></li>
+                    </ul>
+                </li>
+
+                <button ng-click="addPost(inputBody, inputPhoto, inputUrl)" class="btn btn-primary btn-sm btn-icon"><i class="zmdi zmdi-check"></i></button>
+            </ul>
+        </div>
+        <% end %>
+        <div ng-repeat="post in posts">
+            <div>{{ post.body }}</div>
+            <div>{{ post.photo }}</div>
+            <div>{{ post.url }}</div>
+            <% if @user == current_user %>   
             <div>
                 <button ng-click="killPost(post)">Kill this Post</button>
             </div>
             <% end %>
-         </div>
-            <% if @user == current_user  %>
-            <ul>
-              <li ng-repeat="error in errors">{{ error }}</li>
-            </ul>
-            <p>Body: <input ng-model="inputBody"></p>
-            <p>Photo: <input ng-model="inputPhoto"></p>
-            <p>URL: <input ng-model="inputUrl"></p>
-            <button ng-click="addPost(inputBody, inputPhoto, inputUrl)">Add Post</button>
-            <% end %>
-          </div>
-        </div>
-      </div>
 
-          
+
+            <div ng-app="app" class="card-header">
+                <div ng-controller="wallCtrl" ng-init="setup()" class="media">
+                    <div ng-repeat="post in posts" class="pull-left">
+                        <img class="avatar-img a-lg" src="<%= @user.photos.first.image %>" alt="">
+                    </div>
+
+                    <div class="media-body m-t-5">
+                        <h2><%= @user.full_name %> <small>Posted on 2nd Sep 2015 at 17:00</small></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body card-padding">
+                <div>{{ post.body }}</div>
+
+                <div class="wall-img-preview lightbox clearfix">
+                    <div class="wip-item" data-src="media/gallery/2.jpg" style="background-image: url(media/gallery/2.jpg);">
+                        <img src="<%= @user.photos.first.image %>">
+                    </div>
+                    <div class="wip-item" data-src="media/gallery/3.jpg" style="background-image: url(media/gallery/3.jpg);">
+                        <img src="media/gallery/thumbs/2.jpg" alt="">
+                    </div>
+                </div>
+
+                <ul class="wall-attrs clearfix list-inline list-unstyled">
+                    <li class="wa-stats">
+                        <span><i class="zmdi zmdi-comments"></i> 20</span>
+                        <span class="active"><i class="zmdi zmdi-favorite"></i> 78</span>
+                    </li>
+
+                    <li class="wa-users">
+                        <a href=""><img src="img/profile-pics/2.jpg" alt=""></a>
+                        <a href=""><img src="img/profile-pics/3.jpg" alt=""></a>
+                    </li>
+                </ul>
+            </div>
+
+
+
+
+
         </div>
-        <div id="fitnessdata" class="tab-pane fade">
-          <h3>Data</h3>
-          <div>
-          The chart is here:
-          <div class="ct-chart1 ct-perfect-fourth chart-width1" id="chart1"></div>
-          <div class="ct-chart2 ct-perfect-fourth chart-width2" id="chart2"></div>
-        
-          </div>
-        </div>
-        <div id="photos" class="tab-pane fade">
-          <h3>Photos</h3>
-          <div>
-            <div class="pmb-block clearfix photos">
-            <div class="p-header">
+
+
+    </div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+<div id="photos" class="tab-pane fade">
+  <h3>Photos</h3>
+  <div>
+    <div class="pmb-block clearfix photos">
+        <div class="p-header">
             <ul class="p-menu">
-                
-            <% if @user == current_user %>
+
+                <% if @user == current_user %>
 
                 <li class="active"><a href=""><i class="zmdi zmdi-image"></i>Add Photos</a></li>
                 
 
 
                 <a href="" class="pmop-edit">
-                <%= form_tag "/photos", method: :post, multipart: true do %>
+                    <%= form_tag "/photos", method: :post, multipart: true do %>
 
-                  <div>
-                  
-                    <%= file_field_tag :image %>
-                  </div>
+                    <div>
 
-                <span class="hidden-xs">Updload</span>
-                  <i class="zmdi zmdi-camera"></i> <%= submit_tag 'Update' %>
-                <% end %>
-                <% end %>
+                        <%= file_field_tag :image %>
+                    </div>
+
+                    <span class="hidden-xs">Updload</span>
+                    <i class="zmdi zmdi-camera"></i> <%= submit_tag 'Update' %>
+                    <% end %>
+                    <% end %>
                 </a>
-            
+
 
             </ul>
 
-       <div>
+            <div>
 
-        <% @user.photos.each do |photo| %>   
-        <div class="lightbox">
-            <div data-src="<%= photo.image.url %>" class="col-md-3 col-sm-4 col-xs-6 photo-height">
-                <div class="lightbox-item p-item">
-                    <%= image_tag(photo.image.url) %>
+                <% @user.photos.each do |photo| %>   
+                <div class="lightbox">
+                    <div data-src="<%= photo.image.url %>" class="col-md-3 col-sm-4 col-xs-6 photo-height">
+                        <div class="lightbox-item p-item">
+                            <%= image_tag(photo.image.url) %>
+                        </div>
+                    </div>
                 </div>
+                <% end %>
             </div>
+            <div class="clearfix"></div>
         </div>
-     <% end %>
-        </div>
-        <div class="clearfix"></div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
+</div>
+</div>
+</div>
 

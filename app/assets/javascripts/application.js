@@ -14,6 +14,7 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require angular
-//= require app
 //= require chartist
+//= require app
+//= require charttest
 //= require_tree .

@@ -10,6 +10,7 @@
     };
 
     $scope.addPost = function(newPost, newPhoto, newUrl) {
+      console.log("love me!");
       var postParams = {body: newPost, photo: newPhoto, url: newUrl};
       $http.post("/api/v1/posts.json", postParams).then(function(response) {
         $scope.posts.push(response.data);

@@ -22,9 +22,7 @@
 }
 
 .chart-width1 {
-  width: 250px;
-  // margin-left: 300px;
-  // margin-right: 300px;
+  width: 300px;
 }
 .chart-width2 {
   width: 250px;
@@ -45,4 +43,26 @@
   width: 200px;
   // margin-left: 300px;
   // margin-right: 300px;
+}
+
+.flex-row, .flex-row-2 {
+  display: flex;
+}
+
+.flex-row-2 {
+  margin-left: 125px;
+}
+
+.ct-series-b {
+  color: white;
+}
+
+.potato {
+ background-color: #EDE7F6;
+ padding-top: 30px;
+ margin-top: -30px;
+ padding-right: 50px;
+ padding-left: 50px;
+ padding-bottom: 30px;
+ width: 1000px;
 }
