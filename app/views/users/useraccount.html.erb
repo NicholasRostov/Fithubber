@@ -164,10 +164,8 @@
 
             <div ng-app="app" class="card-header">
                 <div ng-controller="wallCtrl" ng-init="setup()" class="media">
-                    <div ng-repeat="post in posts" class="pull-left">
-                        <img class="avatar-img a-lg" src="<%= @user.photos.first.image %>" alt="">
-                    </div>
-
+                <img class="avatar-img a-lg" src="<%= @user.photos.first.image %>" alt="">
+                
                     <div class="media-body m-t-5">
                         <h2><%= @user.full_name %> <small>Posted on 2nd Sep 2015 at 17:00</small></h2>
                     </div>
