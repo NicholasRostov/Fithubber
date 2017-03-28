@@ -39,7 +39,9 @@
                 <li><i class="zmdi zmdi-phone"></i><%= @user.phone_number %></li>
                 <li><i class="zmdi zmdi-email"></i> <%= @user.email %></li>
                 <li><i class="zmdi zmdi-pin-account"></i> <%= @user.username %></li>
-                <li><i class="zmdi zmdi-assignment"></i> <%= @user.dob %></li>
+                <li><i class="zmdi zmdi-assignment"></i> <%= @user.dob.strftime("%b %d, %Y") %></li>
+                <li><i class="zmdi zmdi-pin-account"></i>Sport: <%= @user.activities.first.name %></li>
+                <li><i class="zmdi zmdi-pin-account"></i>Gym: <%= @user.memberships.first.name %></li>
                 <li>
                     <i class="zmdi zmdi-pin"></i>
                     <address class="m-b-0 ng-binding">
@@ -54,7 +56,7 @@
 
         <div class="pmo-block pmo-items hidden-xs">
             <div class="pmob-body">
-                <h2>Connections</h2>
+                
                 <% @user.friends.each do |friend| %> 
                 <div class="row">
                     <a href="" class="col-xs-2">
@@ -73,31 +75,99 @@
     <div class="pm-body clearfix">
         <ul class="nav nav-tabs tn-justified">
             <li class="active waves-effect"><a href="#fitnessdata" data-toggle="tab" >Fitness Data</a></li>
-            <li class="waves-effect"><a href="#feed" data-toggle="tab" >Feed</a></li>
             <li class="waves-effect"><a href="#photos" data-toggle="tab" >Photos</a></li>
+            <li class="waves-effect"><a href="#feed" data-toggle="tab" >Feed</a></li>
         </ul>
-        <div class="tab-content">
+        <div class="tab-content tomato">
             <div id="fitnessdata" class="tab-pane fade in active">
               <h3>Data</h3>
               <div>
                   The chart is here:
-                  <!-- <div class="ct-chart1 ct-perfect-fourth chart-width1" id="chart1"></div> -->
-                  <!-- <div class="ct-chart2 ct-perfect-fourth chart-width2" id="chart2"></div> -->
                   <body ng-app="app" ng-controller="MainController as main">
                     <input type="datetime" ng-model="date"></input>
                     <button ng-click="changeDate(date, <%= current_user.id %>)">Change date</button>
                     <div class="row flex-row">
-                        <pie-chart data="main.data1"></pie-chart>
-                        <pie-chart data="main.data2"></pie-chart>
-                        <pie-chart data="main.data3"></pie-chart>
+                        <div>
+                        <div pie-chart value="tomato" data="main.data1"></div>
+                        <div class="data-name">Calories</div>
+                        </div>
+                        <div>
+                        <div pie-chart value="tomato" data="main.data2"></div>
+                        <div class="data-name">Steps</div>
+                        </div>
+                        <div>
+                        <div pie-chart value="tomato" data="main.data3"></div>
+                        <div class="data-name">Sleep</div>
+                        </div>
                     </div>
                     <div class="row flex-row-2">
-                        <pie-chart data="main.data4"></pie-chart>
-                        <pie-chart data="main.data5"></pie-chart>
+                        <div>
+                        <div pie-chart value="tomato" data="main.data4"></div>
+                        <div class="data-name">Distance</div>
+                        </div>
+                        <div>
+                        <div pie-chart value="tomato" data="main.data5"></div>
+                        <div class="data-name">Heart Rate</div>
+                        </div>
                     </div>
                 </body>
             </div>
         </div>
+
+
+<div id="photos" class="tab-pane fade">
+  <h3>Photos</h3>
+  <div>
+    <div class="pmb-block clearfix photos">
+        <div class="p-header">
+            <ul class="p-menu">
+
+                <% if @user == current_user %>
+
+                <li class="active"><a href=""><i class="zmdi zmdi-image"></i>Add Photos</a></li>
+                
+
+
+                <a href="" class="pmop-edit">
+                    <%= form_tag "/photos", method: :post, multipart: true do %>
+
+                    <div>
+
+                        <%= file_field_tag :image %>
+                    </div>
+
+                    <span class="hidden-xs">Updload</span>
+                    <i class="zmdi zmdi-camera"></i> <%= submit_tag 'Update' %>
+                    <% end %>
+                    <% end %>
+                </a>
+
+
+            </ul>
+
+            <div>
+
+                <% @user.photos.each do |photo| %>   
+                <div class="lightbox">
+                    <div data-src="<%= photo.image.url %>" class="col-md-3 col-sm-4 col-xs-6 photo-height">
+                        <div class="lightbox-item p-item">
+                            <%= image_tag(photo.image.url) %>
+                        </div>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+
         <div id="feed" class="tab-pane fade">
           <div>
             <div ng-app="app">
@@ -151,58 +221,35 @@
             </ul>
         </div>
         <% end %>
-        <div ng-repeat="post in posts">
-            <div>{{ post.body }}</div>
-            <div>{{ post.photo }}</div>
-            <div>{{ post.url }}</div>
-            <% if @user == current_user %>   
-            <div>
-                <button ng-click="killPost(post)">Kill this Post</button>
-            </div>
-            <% end %>
-
-
-            <div ng-app="app" class="card-header">
+        <div  class="card wall-posting card-bg-color" ng-repeat="post in posts | orderBy:'created_at':true">
+            <!-- <div>{{ post.body }}</div> -->
+            <!-- <div>{{ post.photo }}</div> -->
+            <!-- <div>{{ post.url }}</div> -->
+            <!-- <div>{{ post.created_at }}</div> -->
+           
+            <div class="card card-body card-padding edamame card-margin">            
+            <div ng-app="app" class="card-header ">
                 <div ng-controller="wallCtrl" ng-init="setup()" class="media">
                 <img class="avatar-img a-lg" src="<%= @user.photos.first.image %>" alt="">
-                
+
                     <div class="media-body m-t-5">
-                        <h2><%= @user.full_name %> <small>Posted on 2nd Sep 2015 at 17:00</small></h2>
+                        <h2><%= @user.full_name %> <small>Posted on {{ post.created_at.strftime("%b %d, %Y") }}</small></h2>
                     </div>
                 </div>
             </div>
             <div class="card-body card-padding">
                 <div>{{ post.body }}</div>
-<!-- 
-                <div class="wall-img-preview lightbox clearfix">
-                    <div class="wip-item" data-src="media/gallery/2.jpg" style="background-image: url(media/gallery/2.jpg);">
-                        <img src="<%= @user.photos.first.image %>">
-                    </div>
-                    <div class="wip-item" data-src="media/gallery/3.jpg" style="background-image: url(media/gallery/3.jpg);">
-                        <img src="media/gallery/thumbs/2.jpg" alt="">
-                    </div>
-                </div> -->
 
                 <ul class="wall-attrs clearfix list-inline list-unstyled">
-                    <li class="wa-stats">
-                        <span><i class="zmdi zmdi-comments"></i> 20</span>
-                        <span class="active"><i class="zmdi zmdi-favorite"></i> 78</span>
-                    </li>
+                     <% if @user == current_user %>   
+            <div>
+                <button ng-click="killPost(post)">Delete Post</button>
+            </div>
+            <% end %>
 
-                    <li class="wa-users">
-                        <a href=""><img src="img/profile-pics/2.jpg" alt=""></a>
-                        <a href=""><img src="img/profile-pics/3.jpg" alt=""></a>
-                    </li>
                 </ul>
             </div>
-
-
-
-
-
-        </div>
-
-
+    </div>
     </div>
 </div>
 </div>
@@ -213,52 +260,6 @@
 
 
 
-<div id="photos" class="tab-pane fade">
-  <h3>Photos</h3>
-  <div>
-    <div class="pmb-block clearfix photos">
-        <div class="p-header">
-            <ul class="p-menu">
 
-                <% if @user == current_user %>
-
-                <li class="active"><a href=""><i class="zmdi zmdi-image"></i>Add Photos</a></li>
-                
-
-
-                <a href="" class="pmop-edit">
-                    <%= form_tag "/photos", method: :post, multipart: true do %>
-
-                    <div>
-
-                        <%= file_field_tag :image %>
-                    </div>
-
-                    <span class="hidden-xs">Updload</span>
-                    <i class="zmdi zmdi-camera"></i> <%= submit_tag 'Update' %>
-                    <% end %>
-                    <% end %>
-                </a>
-
-
-            </ul>
-
-            <div>
-
-                <% @user.photos.each do |photo| %>   
-                <div class="lightbox">
-                    <div data-src="<%= photo.image.url %>" class="col-md-3 col-sm-4 col-xs-6 photo-height">
-                        <div class="lightbox-item p-item">
-                            <%= image_tag(photo.image.url) %>
-                        </div>
-                    </div>
-                </div>
-                <% end %>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-</div>
-</div>
 </div>
 

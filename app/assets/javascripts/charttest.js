@@ -27,7 +27,7 @@ angular.module("app").controller("MainController", function($scope, $http) {
 
 function pieChart() {
     return {
-        restrict: 'EA',
+        restrict: 'EAC',
         template: '<div class="chart-width1 ct-chart ct-perfect-fourth"></div>',
         scope: {
             data: '='

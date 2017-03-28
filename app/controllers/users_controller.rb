@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   def show
     if current_user
       @user = User.find_by(id: params[:id])
-      @today_datas = @user.fitness_datas.where(date: Date.today)
+      # @today_datas = @user.fitness_datas.where(date: Date.today)
       headers = "Bearer #{session[:fitbit_token]}"
       gon.calories_data = [@user.fitness_datas.find_by(date: "2017-03-01").calories, (3500 - @user.fitness_datas.find_by(date: "2017-03-14").calories)]
       gon.steps_data = [@user.fitness_datas.find_by(date: "2017-03-01").steps, (10000 - @user.fitness_datas.find_by(date: "2017-03-14").steps)]
