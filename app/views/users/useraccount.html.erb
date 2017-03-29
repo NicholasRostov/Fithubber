@@ -32,7 +32,7 @@
         </div>
 
 
-        <div class="pmo-block pmo-contact hidden-xs">
+        <div class="pmo-block pmo-contact hidden-xs <%= 'contact-margin' unless @user == current_user %>">
             <h2>Contact</h2>
 
             <ul>
@@ -72,7 +72,7 @@
         </div>
     </div>
 
-    <div class="pm-body clearfix">
+    <div class="pm-body clearfix <%= 'new-position' unless current_user.id == 16 && @user == current_user %>">
         <ul class="nav nav-tabs tn-justified">
             <li class="active waves-effect"><a href="#fitnessdata" data-toggle="tab" >Fitness Data</a></li>
             <li class="waves-effect"><a href="#photos" data-toggle="tab" >Photos</a></li>
@@ -80,34 +80,39 @@
         </ul>
         <div class="tab-content tomato">
             <div id="fitnessdata" class="tab-pane fade in active">
-              <h3>Data</h3>
+              <h3>Fitbit Data</h3>
               <div>
-                  The chart is here:
+                
                   <body ng-app="app" ng-controller="MainController as main">
                     <input type="datetime" ng-model="date"></input>
-                    <button ng-click="changeDate(date, <%= current_user.id %>)">Change date</button>
+                    <button ng-click="changeDate(date, <%= @user.id %>)">Change date</button>
                     <div class="row flex-row">
                         <div>
                         <div pie-chart value="tomato" data="main.data1"></div>
                         <div class="data-name">Calories</div>
+                        <div class="perc">{{ calories_percentage }}%</div>
                         </div>
                         <div>
-                        <div pie-chart value="tomato" data="main.data2"></div>
+                        <div pie-chart value="tomato" data="main.data2">%</div>
                         <div class="data-name">Steps</div>
+                        <div class="perc">{{ steps_percentage }}%</div>
                         </div>
                         <div>
                         <div pie-chart value="tomato" data="main.data3"></div>
                         <div class="data-name">Sleep</div>
+                        <div class="perc">{{ sleep_percentage }}%</div>
                         </div>
                     </div>
                     <div class="row flex-row-2">
                         <div>
                         <div pie-chart value="tomato" data="main.data4"></div>
                         <div class="data-name">Distance</div>
+                        <div class="perc dis">{{ distance_percentage }}%</div>
                         </div>
                         <div>
                         <div pie-chart value="tomato" data="main.data5"></div>
-                        <div class="data-name">Heart Rate</div>
+                        <div class="data-name heart">Resting Heart Rate</div>
+                        <div class="perc">{{ heart_percentage }}%</div>
                         </div>
                     </div>
                 </body>
@@ -171,7 +176,7 @@
         <div id="feed" class="tab-pane fade">
           <div>
             <div ng-app="app">
-                <div ng-controller="wallCtrl" ng-init="setup()">
+                <div ng-controller="wallCtrl" ng-init="setup(<%= @user.id %>)">
                     <% if @user == current_user  %>
                     <ul>
                       <li ng-repeat="error in errors">{{ error }}</li>
@@ -189,7 +194,7 @@
                                            <div href="" class="pmop-edit">
                                             <%= form_tag "/photos", method: :post, multipart: true do %>
                                             <div>
-                                                <%= file_field_tag :image, onclick: "console.log('hi2')" %>
+                                                <%= file_field_tag :image %>
                                             </div>
                                             <span class="hidden-xs">Upload picture</span>
                                             <i class="zmdi zmdi-camera"></i> <%= submit_tag 'Upload' %>
@@ -217,7 +222,7 @@
                     </ul>
                 </li>
 
-                <button ng-click="addPost(inputBody, inputPhoto, inputUrl)" class="btn btn-primary btn-sm btn-icon"><i class="zmdi zmdi-check"></i></button>
+                <button ng-click="addPost(inputBody, inputPhoto, inputUrl, <%= @user.id %>)" class="btn btn-primary btn-sm btn-icon"><i class="zmdi zmdi-check"></i></button>
             </ul>
         </div>
         <% end %>
@@ -229,7 +234,7 @@
            
             <div class="card card-body card-padding edamame card-margin">            
             <div ng-app="app" class="card-header ">
-                <div ng-controller="wallCtrl" ng-init="setup()" class="top">
+                <div ng-controller="wallCtrl" ng-init="setup(<%= @user.id %>)" class="top">
                 <img class="avatar-img a-lg" src="<%= @user.photos.first.image %>" alt="">
 
                     <div class="media-body m-t-5">

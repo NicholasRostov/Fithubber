@@ -1,12 +1,12 @@
 class Api::V1::PostsController < ApplicationController
   def create
-    @post = Post.new(body: params[:body], photo: params[:photo], url: params[:url])
+    @post = Post.new(body: params[:body], photo: params[:photo], url: params[:url], user_id: params[:user_id])
     @post.save
     render "show.json.jbuilder"
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.where(user_id: params[:user_id])
     render "index.json.jbuilder"
   end
 

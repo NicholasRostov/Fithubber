@@ -3,15 +3,16 @@
   "use strict";
 
   angular.module("app").controller("wallCtrl", function($scope, $http) {
-    $scope.setup = function() {    
-      $http.get("/api/v1/posts.json").then(function(response) {
+    $scope.setup = function(id) {    
+      console.log(id);
+      $http({method: "GET", url: "/api/v1/posts.json", params: {user_id: id}}).then(function(response) {
         $scope.posts = response.data;
       });
     };
 
-    $scope.addPost = function(newPost, newPhoto, newUrl) {
+    $scope.addPost = function(newPost, newPhoto, newUrl, user_id) {
       console.log("love me!");
-      var postParams = {body: newPost, photo: newPhoto, url: newUrl};
+      var postParams = {body: newPost, photo: newPhoto, url: newUrl, user_id: user_id};
       $http.post("/api/v1/posts.json", postParams).then(function(response) {
         console.log($scope.posts);
         $scope.posts.push(response.data);

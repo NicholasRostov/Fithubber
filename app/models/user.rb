@@ -9,5 +9,6 @@ class User < ApplicationRecord
   has_many :friends, through: :friendships
   has_one :fit_user
   has_many :photos
+  has_many :posts
   
 end

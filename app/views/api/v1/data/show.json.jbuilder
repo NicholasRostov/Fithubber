@@ -3,3 +3,8 @@ json.distance_data @distance_data
 json.steps_data @steps_data
 json.heart_rate_data @heart_rate_data
 json.sleep_data @sleep_data
+json.distance_percentage @distance_percentage
+json.steps_percentage @steps_percentage
+json.heart_percentage @heart_percentage
+json.calories_percentage @calories_percentage
+json.sleep_percentage @sleep_percentage

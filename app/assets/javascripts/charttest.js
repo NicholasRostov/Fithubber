@@ -7,6 +7,12 @@ angular.module("app").controller("MainController", function($scope, $http) {
   vm.data3 = gon.sleep_data;
   vm.data4 = gon.distance_data;
   vm.data5 = gon.heart_rate_data;
+  $scope.calories_percentage = Math.round(gon.calories_percentage);
+  $scope.steps_percentage = Math.round(gon.steps_percentage);
+  $scope.heart_percentage = Math.round(gon.heart_percentage);
+  $scope.sleep_percentage = Math.round(gon.sleep_percentage);
+  $scope.distance_percentage = Math.round(gon.distance_percentage);
+
 
   $scope.changeDate = function(date, userId) {
     $http.post("/api/v1/data.json", {date: date, id: userId}).then(function(response) {
@@ -17,6 +23,11 @@ angular.module("app").controller("MainController", function($scope, $http) {
       vm.data3 = response.data.sleep_data;
       vm.data4 = response.data.distance_data;
       vm.data5 = response.data.heart_rate_data;
+      $scope.calories_percentage = Math.round(response.data.calories_percentage);
+      $scope.steps_percentage = Math.round(response.data.steps_percentage);
+      $scope.heart_percentage = Math.round(response.data.heart_percentage);
+      $scope.sleep_percentage = Math.round(response.data.sleep_percentage);
+      $scope.distance_percentage = Math.round(response.data.distance_percentage);
     }, function(error) {
       console.log("error!");
     });

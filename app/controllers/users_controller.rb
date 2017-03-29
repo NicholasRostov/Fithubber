@@ -5,8 +5,20 @@ class UsersController < ApplicationController
   end
 
   def search
-    search_result = params[:search_result]
+    search_result = params[:search_result].capitalize
     @user = User.find_by("full_name LIKE ?", "%#{search_result}%")
+    headers = "Bearer #{session[:fitbit_token]}"
+    gon.calories_data = [@user.fitness_datas.find_by(date: "2017-03-01").calories, (3500 - @user.fitness_datas.find_by(date: "2017-03-01").calories)]
+    # binding.pry
+    gon.calories_percentage = (@user.fitness_datas.find_by(date: "2017-03-01").calories.to_f / 3500) * 100
+    gon.steps_data = [@user.fitness_datas.find_by(date: "2017-03-01").steps, (10000 - @user.fitness_datas.find_by(date: "2017-03-01").steps)]
+    gon.steps_percentage = (@user.fitness_datas.find_by(date: "2017-03-01").steps.to_f / 10000) * 100
+    gon.sleep_data = [@user.fitness_datas.find_by(date: "2017-03-01").sleep, (480 - @user.fitness_datas.find_by(date: "2017-03-01").sleep)]
+     gon.sleep_percentage = (@user.fitness_datas.find_by(date: "2017-03-01").sleep.to_f / 480) * 100
+    gon.heart_rate_data = [@user.fitness_datas.find_by(date: "2017-03-01").heart_rate, (58 - @user.fitness_datas.find_by(date: "2017-03-01").heart_rate)]
+     gon.heart_percentage = (@user.fitness_datas.find_by(date: "2017-03-01").heart_rate.to_f / 58) * 100
+    gon.distance_data = [@user.fitness_datas.find_by(date: "2017-03-01").distance, (15 - @user.fitness_datas.find_by(date: "2017-03-01").distance)]
+     gon.distance_percentage = (@user.fitness_datas.find_by(date: "2017-03-01").distance.to_f / 15) * 100
     if @user
       render "useraccount.html.erb"
     else
@@ -48,11 +60,18 @@ class UsersController < ApplicationController
       @user = User.find_by(id: params[:id])
       # @today_datas = @user.fitness_datas.where(date: Date.today)
       headers = "Bearer #{session[:fitbit_token]}"
-      gon.calories_data = [@user.fitness_datas.find_by(date: "2017-03-01").calories, (3500 - @user.fitness_datas.find_by(date: "2017-03-14").calories)]
-      gon.steps_data = [@user.fitness_datas.find_by(date: "2017-03-01").steps, (10000 - @user.fitness_datas.find_by(date: "2017-03-14").steps)]
-      gon.sleep_data = [@user.fitness_datas.find_by(date: "2017-03-01").sleep, (8 - @user.fitness_datas.find_by(date: "2017-03-14").sleep)]
-      gon.heart_rate_data = [@user.fitness_datas.find_by(date: "2017-03-01").heart_rate, (58 - @user.fitness_datas.find_by(date: "2017-03-14").heart_rate)]
-      gon.distance_data = [@user.fitness_datas.find_by(date: "2017-03-01").distance, (15 - @user.fitness_datas.find_by(date: "2017-03-14").distance)]
+      headers = "Bearer #{session[:fitbit_token]}"
+      gon.calories_data = [@user.fitness_datas.find_by(date: "2017-03-01").calories, (3500 - @user.fitness_datas.find_by(date: "2017-03-01").calories)]
+      # binding.pry
+      gon.calories_percentage = (@user.fitness_datas.find_by(date: "2017-03-01").calories.to_f / 3500) * 100
+      gon.steps_data = [@user.fitness_datas.find_by(date: "2017-03-01").steps, (10000 - @user.fitness_datas.find_by(date: "2017-03-01").steps)]
+      gon.steps_percentage = (@user.fitness_datas.find_by(date: "2017-03-01").steps.to_f / 10000) * 100
+      gon.sleep_data = [@user.fitness_datas.find_by(date: "2017-03-01").sleep, (480 - @user.fitness_datas.find_by(date: "2017-03-01").sleep)]
+       gon.sleep_percentage = (@user.fitness_datas.find_by(date: "2017-03-01").sleep.to_f / 480) * 100
+      gon.heart_rate_data = [@user.fitness_datas.find_by(date: "2017-03-01").heart_rate, (58 - @user.fitness_datas.find_by(date: "2017-03-01").heart_rate)]
+       gon.heart_percentage = (@user.fitness_datas.find_by(date: "2017-03-01").heart_rate.to_f / 58) * 100
+      gon.distance_data = [@user.fitness_datas.find_by(date: "2017-03-01").distance, (15 - @user.fitness_datas.find_by(date: "2017-03-01").distance)]
+       gon.distance_percentage = (@user.fitness_datas.find_by(date: "2017-03-01").distance.to_f / 15) * 100
       render "useraccount.html.erb"
     else
       redirect_to "/login"
